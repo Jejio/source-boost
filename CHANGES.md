@@ -8,4 +8,7 @@
 * removed `reducep` and `transducep`
 * got rid of `j.z.i.signal/output-mult`
 * calling core.async's `tap` function on a live graph created with `spawn` now supplies you with straight fresh values from the output signal, instead of batches of fresh & cached messages
-  - this means that values of an output si
+  - this means that values of an output signal can never be `nil`, since core.async channels don't do `nil`s
+* added `write-port`, a signal constructor that lets you treat the returned signal like a write-only `core.async` channel.
+
+## 0.3.1
