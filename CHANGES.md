@@ -12,3 +12,5 @@
 * added `write-port`, a signal constructor that lets you treat the returned signal like a write-only `core.async` channel.
 
 ## 0.3.1
+
+* fixed a bug that would throw an error if you tried to use a folding signal like `foldp` on a signal that emitted multiple values from a single event, e.
