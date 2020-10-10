@@ -18,4 +18,7 @@
 ## 0.3.0
 
 * `lift`/`liftseq` renamed to `map`/`mapseq`
-* `input` signal constructor now also accepts a channel or mult as its valu
+* `input` signal constructor now also accepts a channel or mult as its value source
+* new `pipeline` function lets you transform signals using transducers
+* extracted some implementation details into `impl` namespaces
+* `splice` function lets you create
