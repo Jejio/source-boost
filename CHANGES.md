@@ -21,4 +21,6 @@
 * `input` signal constructor now also accepts a channel or mult as its value source
 * new `pipeline` function lets you transform signals using transducers
 * extracted some implementation details into `impl` namespaces
-* `splice` function lets you create
+* `splice` function lets you create arbitrary asynchronous signal transformations
+* a bunch of new functions in the `time` namespace (`timestamp`, `delay`, `since`, `debounce`)
+* `impl.signal/signal-mult` function to 
