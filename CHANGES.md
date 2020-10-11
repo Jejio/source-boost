@@ -23,4 +23,6 @@
 * extracted some implementation details into `impl` namespaces
 * `splice` function lets you create arbitrary asynchronous signal transformations
 * a bunch of new functions in the `time` namespace (`timestamp`, `delay`, `since`, `debounce`)
-* `impl.signal/signal-mult` function to 
+* `impl.signal/signal-mult` function to get a particular signal's message mult from a live graph
+* signals now provide init functions to calculate their initial values whenever a live graph is fired up
+* various functions which 
