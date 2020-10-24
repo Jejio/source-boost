@@ -26,4 +26,4 @@
 * `impl.signal/signal-mult` function to get a particular signal's message mult from a live graph
 * signals now provide init functions to calculate their initial values whenever a live graph is fired up
 * various functions which previously required a base value now have lesser-arity forms which inherit the initial value of one of their parent signals
-* `activate-when` function is like `keep-when`, but entire
+* `activate-when` function is like `keep-when`, but entirely deactivates unused signals
