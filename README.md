@@ -10,4 +10,10 @@
 
 Here's a [conference talk with some demos](https://www.youtube.com/watch?v=rOKOCAkHNYw)!
 
-Here's a [mailing list on Google Groups](https://groups.google.com/d/foru
+Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelkova-frp)!
+
+## Bullet points
+
+* signal graphs are static, just like in Elm ([why?](https://www.youtube.com/watch?v=Agu6jipKfYw))
+* core.async is used to wire up running graphs
+* you 
