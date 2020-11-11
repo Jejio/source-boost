@@ -17,4 +17,5 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 * signal graphs are static, just like in Elm ([why?](https://www.youtube.com/watch?v=Agu6jipKfYw))
 * core.async is used to wire up running graphs
 * you can run as many signal graphs as you want at the same time
-* graphs can share signal nodes because each signal is just a "recipe" value decoupled from the sta
+* graphs can share signal nodes because each signal is just a "recipe" value decoupled from the state of any running graph
+* works in both Clojure and ClojureScript, but ClojureScript is currently better supported with implementations for [keyboard](https://github.com/jamesma
