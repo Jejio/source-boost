@@ -18,4 +18,4 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 * core.async is used to wire up running graphs
 * you can run as many signal graphs as you want at the same time
 * graphs can share signal nodes because each signal is just a "recipe" value decoupled from the state of any running graph
-* works in both Clojure and ClojureScript, but ClojureScript is currently better supported with implementations for [keyboard](https://github.com/jamesma
+* works in both Clojure and ClojureScript, but ClojureScript is currently better supported with implementations for [keyboard](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/keyboard.cljc), [mouse](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/mouse.cljc), and [window](
