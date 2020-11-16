@@ -19,4 +19,4 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 * you can run as many signal graphs as you want at the same time
 * graphs can share signal nodes because each signal is just a "recipe" value decoupled from the state of any running graph
 * works in both Clojure and ClojureScript, but ClojureScript is currently better supported with implementations for [keyboard](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/keyboard.cljc), [mouse](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/mouse.cljc), and [window](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/window.cljc) signals (basically straight ports from the Elm libraries)
-* pairs really wel
+* pairs really well with immediate-mode rendering (e.g. [React](http://facebook.github.io/react/)-based systems like [Om](https://github.com/swannodette/om) or [Reagent](http://ho
