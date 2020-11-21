@@ -27,4 +27,8 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 ```clojure
 (ns my-app.ui
   (:require [jamesmacaulay.zelkova.signal :as z]
-            [jamesmacaulay.z
+            [jamesmacaulay.zelkova.keyboard :as keyboard]
+            [jamesmacaulay.zelkova.mouse :as mouse]))
+
+(def saved-points-signal
+  (let [shift-clicks (z/keep-when keyb
