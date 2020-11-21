@@ -20,4 +20,11 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 * graphs can share signal nodes because each signal is just a "recipe" value decoupled from the state of any running graph
 * works in both Clojure and ClojureScript, but ClojureScript is currently better supported with implementations for [keyboard](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/keyboard.cljc), [mouse](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/mouse.cljc), and [window](https://github.com/jamesmacaulay/zelkova/blob/master/src/jamesmacaulay/zelkova/window.cljc) signals (basically straight ports from the Elm libraries)
 * pairs really well with immediate-mode rendering (e.g. [React](http://facebook.github.io/react/)-based systems like [Om](https://github.com/swannodette/om) or [Reagent](http://holmsand.github.io/reagent/))
-* [transducer pipelines](https://github.com/jamesmacaulay/zelkova/blob/779deaa1c9563171871a040f3dca619f0e7ed755/test/jamesmacaulay/ze
+* [transducer pipelines](https://github.com/jamesmacaulay/zelkova/blob/779deaa1c9563171871a040f3dca619f0e7ed755/test/jamesmacaulay/zelkova/signal_test.cljc#L477-L494)!!
+
+## What does it look like?
+
+```clojure
+(ns my-app.ui
+  (:require [jamesmacaulay.zelkova.signal :as z]
+            [jamesmacaulay.z
