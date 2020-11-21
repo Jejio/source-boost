@@ -46,4 +46,5 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 
 ## Examples
 
-* [Quil Flyer](http://jamesmacaulay.github.
+* [Quil Flyer](http://jamesmacaulay.github.io/zelkova-quil-flyer/resources/public/index.html) ([source](https://github.com/jamesmacaulay/zelkova-quil-flyer))
+* [Om Search](http://jamesmacaulay.github.io/zelkova-om-s
