@@ -31,4 +31,10 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
             [jamesmacaulay.zelkova.mouse :as mouse]))
 
 (def saved-points-signal
-  (let [shift-clicks (z/keep-when keyb
+  (let [shift-clicks (z/keep-when keyboard/shift mouse/clicks)]
+    (->> mouse/position
+         (z/sample-on shift-clicks)
+         (z/reductions conj #{}))))
+
+(def saved-points-atom
+  (z/pipe-to-atom 
