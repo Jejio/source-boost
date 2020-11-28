@@ -50,4 +50,4 @@ Here's a [mailing list on Google Groups](https://groups.google.com/d/forum/zelko
 * [Om Search](http://jamesmacaulay.github.io/zelkova-om-searcher/resources/public/index.html) ([source](https://github.com/jamesmacaulay/zelkova-om-searcher))
 * [Todo MVC](http://jamesmacaulay.github.io/zelkova-todomvc/) ([source](https://github.com/jamesmacaulay/zelkova-todomvc/blob/master/src/cljs/zelkova_todomvc/core.cljs))
 * [Mario](http://jamesmacaulay.github.io/zelkova/examples/mario/resources/public/) ([source](https://github.com/jamesmacaulay/zelkova/blob/gh-pages/examples/mario/src/mario/core.cljs))
-* [Drag and Drop](http://ja
+* [Drag and Drop](http://jamesmacaulay.github.io/zelkova/examples/drag_and_drop/resources/public/) ([source](https://github.com/jamesmacaulay/zelkova/blob/gh-pages/examples/drag_and_drop/src/dr
