@@ -22,4 +22,6 @@
   :cljsbuild {
     :builds [{:id "dev"
               :source-paths ["src" "dev_src"]
-      
+              :compiler {:output-to "resources/public/js/compiled/drag_and_drop.js"
+                         :output-dir "resources/public/js/compiled/out"
+                  
