@@ -24,4 +24,7 @@
               :source-paths ["src" "dev_src"]
               :compiler {:output-to "resources/public/js/compiled/drag_and_drop.js"
                          :output-dir "resources/public/js/compiled/out"
-                  
+                         :optimizations :none
+                         :main drag-and-drop.dev
+                         :asset-path "js/compiled/out"
+                         :source-map 
