@@ -27,4 +27,9 @@
                          :optimizations :none
                          :main drag-and-drop.dev
                          :asset-path "js/compiled/out"
-                         :source-map 
+                         :source-map true
+                         :source-map-timestamp true
+                         :cache-analysis true }}
+             {:id "min"
+              :source-paths ["src"]
+            
