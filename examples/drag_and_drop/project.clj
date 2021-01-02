@@ -43,4 +43,8 @@
              :css-dirs ["resources/public/css"] ;; watch and update CSS
 
              ;; Start an nREPL server into the running figwheel process
-       
+             ;; :nrepl-port 7888
+
+             ;; Server Ring Handler (optional)
+             ;; if you want to embed a ring handler into the figwheel http-kit
+             ;; server, this is s
