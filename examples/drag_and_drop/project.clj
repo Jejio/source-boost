@@ -32,4 +32,6 @@
                          :cache-analysis true }}
              {:id "min"
               :source-paths ["src"]
-            
+              :compiler {:output-to "resources/public/js/compiled/drag_and_drop.js"
+                         :main drag-and-drop.core                         
+               
