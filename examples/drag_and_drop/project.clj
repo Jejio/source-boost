@@ -53,4 +53,9 @@
 
              ;; To be able to open files in your editor from the heads up display
              ;; you will need to put a script on your path.
-             ;; that script wi
+             ;; that script will have to take a file path and a line number
+             ;; ie. in  ~/bin/myfile-opener
+             ;; #! /bin/sh
+             ;; emacsclient -n +$2 $1
+             ;;
+             ;; :
