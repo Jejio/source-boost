@@ -84,3 +84,82 @@
 (defn drop-boxes
   [state]
   (let [drop-box (fn [box] (dissoc box :drag-offset :resizing?))]
+    (update-in state [:boxes] (partial into [] (map drop-box)))))
+
+(defn stop-drag
+  [state]
+  (-> state (drop-boxes) (assoc :drag nil)))
+
+(defrecord NoOp [] IFn (-invoke [_ state] state))
+(defrecord Click [pos] IFn (-invoke [_ state] (click pos state)))
+(defrecord StartDrag [pos] IFn (-invoke [_ state] (start-drag pos state)))
+(defrecord Drag [pos] IFn (-invoke [_ state] (drag pos state)))
+(defrecord StopDrag [] IFn (-invoke [_ state] (stop-drag state)))
+
+(def state-signal
+  (let [dragging-positions (z/keep-when mouse/down?
+                                        [0 0]
+                                        mouse/position)
+        dragging? (->> (z/constant true)
+                       (z/sample-on dragging-positions)
+                       (z/merge (z/keep-if not false mouse/down?))
+                       (z/drop-repeats))
+        dragstarts (z/keep-if identity true dragging?)
+        dragstops (z/keep-if not false dragging?)
+        click-positions (->> mouse/position (z/sample-on mouse/clicks) (z/drop-when dragging? [0 0]))
+        actions (z/merge (z/constant (->NoOp))
+                         (z/map ->StartDrag (z/sample-on dragstarts mouse/position))
+                         (z/map (constantly (->StopDrag)) dragstops)
+                         (z/map ->Drag dragging-positions)
+                         (z/map ->Click click-positions))]
+    (z/foldp (fn [action state]
+               (assoc (action state)
+                 :last-action (pr-str action)))
+             init-state
+             actions)))
+
+(def app-state (z/pipe-to-atom state-signal))
+
+(defn box-color
+  [box]
+  (let [opacity (if (or (moving? box) (resizing? box)) 0.5 1)]
+    (str "hsla(" (:hue box) ",50%,50%," opacity ")")))
+
+(defn render-box
+  [box]
+  (when box
+    (dom/div #js {:style #js {:backgroundColor (box-color box)
+                              :position "absolute"
+                              :top (:top box)
+                              :left (:left box)
+                              :width (:width box)
+                              :height (:height box)}}
+             nil)))
+
+(defn render-state
+  [state]
+  (dom/div #js {:style #js {:-webkit-touch-callout "none"
+                            :-webkit-user-select "none"
+                            :-khtml-user-select "none"
+                            :-moz-user-select "none"
+                            :-ms-user-select "none"
+                            :user-select "none"}}
+           (apply dom/div nil
+                  (map render-box (:boxes state)))
+           (dom/div #js {:style #js {:position "relative"}}
+                    (dom/h1 nil "Drag and drop")
+                    (dom/p nil
+                           (dom/a #js {:href "https://github.com/jamesmacaulay/zelkova/blob/gh-pages/examples/drag-and-drop/src/drag_and_drop/core.cljs"}
+                                  "View source")
+                           ".")
+                    (dom/p nil
+                           "Drag to create boxes, drag to move them around, and click to remove them.")
+                    (dom/pre nil (.stringify js/JSON (clj->js state) nil 2)))))
+
+(om/root
+  (fn [app owner]
+    (reify om/IRender
+      (render [_]
+        (render-state app))))
+  app-state
+  {:target (. js/document (getElementById "app"))})
