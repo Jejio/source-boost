@@ -2,4 +2,4 @@
 
 Tiny little demo of some functions for working with time.
 
-Run the 
+Run the example with `lein figwheel`.
