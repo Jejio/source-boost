@@ -16,4 +16,9 @@
 
   :source-paths ["src"]
 
-  :clean-targets ^{:protect false} ["reso
+  :clean-targets ^{:protect false} ["resources/public/js/compiled"]
+  
+  :cljsbuild {
+    :builds [{:id "dev"
+              :source-paths ["src" "dev_src"]
+              :compiler {:output-to "resources
