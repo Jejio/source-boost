@@ -21,4 +21,7 @@
   :cljsbuild {
     :builds [{:id "dev"
               :source-paths ["src" "dev_src"]
-              :compiler {:output-to "resources
+              :compiler {:output-to "resources/public/js/compiled/timelord.js"
+                         :output-dir "resources/public/js/compiled/out"
+                         :optimizations :none
+        
