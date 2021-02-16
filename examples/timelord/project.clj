@@ -24,4 +24,7 @@
               :compiler {:output-to "resources/public/js/compiled/timelord.js"
                          :output-dir "resources/public/js/compiled/out"
                          :optimizations :none
-        
+                         :main timelord.dev
+                         :asset-path "js/compiled/out"
+                         :source-map true
+                     
