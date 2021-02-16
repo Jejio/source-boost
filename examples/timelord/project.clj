@@ -27,4 +27,8 @@
                          :main timelord.dev
                          :asset-path "js/compiled/out"
                          :source-map true
-                     
+                         :source-map-timestamp true
+                         :cache-analysis true }}
+             {:id "min"
+              :source-paths ["src"]
+              
