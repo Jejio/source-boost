@@ -31,4 +31,6 @@
                          :cache-analysis true }}
              {:id "min"
               :source-paths ["src"]
-              
+              :compiler {:output-to "resources/public/js/compiled/timelord.js"
+                         :main timelord.core                         
+                      
