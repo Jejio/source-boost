@@ -33,4 +33,9 @@
               :source-paths ["src"]
               :compiler {:output-to "resources/public/js/compiled/timelord.js"
                          :main timelord.core                         
-                      
+                         :optimizations :advanced
+                         :pretty-print false}}]}
+
+  :figwheel {
+             :http-server-root "public" ;; default and assumes "resources" 
+          
