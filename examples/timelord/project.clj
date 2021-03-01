@@ -48,4 +48,8 @@
              ;; if you want to embed a ring handler into the figwheel http-kit
              ;; server, this is simple ring servers, if this
              ;; doesn't work for you just run your own server :)
-             ;; :ring-handler hello_wo
+             ;; :ring-handler hello_world.server/handler
+
+             ;; To be able to open files in your editor from the heads up display
+             ;; you will need to put a script on your path.
+             ;; that s
