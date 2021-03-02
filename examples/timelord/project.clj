@@ -56,3 +56,8 @@
              ;; ie. in  ~/bin/myfile-opener
              ;; #! /bin/sh
              ;; emacsclient -n +$2 $1
+             ;;
+             ;; :open-file-command "myfile-opener"
+
+             ;; if you want to disable the REPL
+             ;; :repl fals
