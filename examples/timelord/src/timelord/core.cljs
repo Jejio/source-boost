@@ -1,4 +1,10 @@
 (ns ^:figwheel-always timelord.core
   (:require [reagent.core :as reagent :refer [atom]]
             [jamesmacaulay.zelkova.signal :as z]
-            [jamesmacaulay.zelkova.impl.signal 
+            [jamesmacaulay.zelkova.impl.signal :as zimpl]
+            [jamesmacaulay.zelkova.mouse :as mouse]
+            [jamesmacaulay.zelkova.time :as time]))
+
+(enable-console-print!)
+
+(def app-signal (z/template {:timestamped (time/time
