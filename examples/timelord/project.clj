@@ -60,4 +60,8 @@
              ;; :open-file-command "myfile-opener"
 
              ;; if you want to disable the REPL
-             ;; :repl fals
+             ;; :repl false
+
+             ;; to configure a different figwheel logfile path
+             ;; :server-logfile "tmp/logs/figwheel-logfile.log" 
+             })
