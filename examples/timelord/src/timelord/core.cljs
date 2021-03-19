@@ -7,4 +7,8 @@
 
 (enable-console-print!)
 
-(def app-signal (z/template {:timestamped (time/time
+(def app-signal (z/template {:timestamped (time/timestamp mouse/position)
+                             :delayed (time/delay 1000 mouse/position)
+                             :debounced (time/debounce 500 mouse/position)}))
+
+(d
