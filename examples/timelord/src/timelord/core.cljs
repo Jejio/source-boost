@@ -11,4 +11,13 @@
                              :delayed (time/delay 1000 mouse/position)
                              :debounced (time/debounce 500 mouse/position)}))
 
-(d
+(def live-graph (z/spawn app-signal))
+
+;; -------------------------
+;; State
+(defonce app-state (atom (zimpl/init live-graph)))
+
+(z/pipe-to-atom live-graph app-state)
+
+
+;; --------------------
