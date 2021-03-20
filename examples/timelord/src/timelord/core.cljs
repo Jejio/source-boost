@@ -20,4 +20,12 @@
 (z/pipe-to-atom live-graph app-state)
 
 
-;; --------------------
+;; -------------------------
+;; Views
+
+(defn main-page []
+  [:div [:pre (pr-str @app-state)]])
+
+;; -------------------------
+;; Initialize app
+(reagent/render-component [main-page] (.getElementById js/document "app
