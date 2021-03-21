@@ -28,4 +28,4 @@
 
 ;; -------------------------
 ;; Initialize app
-(reagent/render-component [main-page] (.getElementById js/document "app
+(reagent/render-component [main-page] (.getElementById js/document "app"))
