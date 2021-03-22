@@ -7,4 +7,8 @@
                  [org.clojure/clojurescript "0.0-3308"]
                  [org.clojure/core.async "0.1.346.0-17112a-alpha"]]
   :plugins [[lein-cljsbuild "1.0.5"]
-            [com.cemerick/clojurescript.test
+            [com.cemerick/clojurescript.test "0.3.3"]
+            [funcool/codeina "0.3.0-SNAPSHOT"]]
+
+  :codeina {:sources ["src/jamesmacaulay/zelkova"]
+            :exclude [jamesmacaulay.zelkova.impl.signal
