@@ -12,3 +12,6 @@
 
   :codeina {:sources ["src/jamesmacaulay/zelkova"]
             :exclude [jamesmacaulay.zelkova.impl.signal
+                      jamesmacaulay.zelkova.impl.time]
+            :reader :clojurescript
+            :src-uri "http://github.com/jamesmacaulay/zelkova/blob/master/
