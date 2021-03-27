@@ -14,4 +14,9 @@
             :exclude [jamesmacaulay.zelkova.impl.signal
                       jamesmacaulay.zelkova.impl.time]
             :reader :clojurescript
-            :src-uri "http://github.com/jamesmacaulay/zelkova/blob/master/
+            :src-uri "http://github.com/jamesmacaulay/zelkova/blob/master/"
+            :src-uri-prefix "#L"}
+
+  :aliases {"repl" ["with-profile" "repl" "repl"]
+            "cljs-test" ["cljsbuild" "test"]
+            "cljs-autotest" ["cljsbuild" "auto" "te
