@@ -19,4 +19,7 @@
 
   :aliases {"repl" ["with-profile" "repl" "repl"]
             "cljs-test" ["cljsbuild" "test"]
-            "cljs-autotest" ["cljsbuild" "auto" "te
+            "cljs-autotest" ["cljsbuild" "auto" "test"]
+            "all-tests" ["do" "clean" ["test"] ["cljs-test"]]}
+  :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.10"]
+                     
