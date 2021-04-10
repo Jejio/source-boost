@@ -22,4 +22,6 @@
             "cljs-autotest" ["cljsbuild" "auto" "test"]
             "all-tests" ["do" "clean" ["test"] ["cljs-test"]]}
   :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.10"]
-                     
+                                  [org.clojure/tools.nrepl "0.2.10"]
+                                  [com.cemerick/piggieback "0.2.0"]
+                                  [net.cgrand/parsley "0.9.3" :exclusion
