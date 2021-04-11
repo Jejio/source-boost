@@ -24,4 +24,7 @@
   :profiles {:dev {:dependencies [[org.clojure/tools.namespace "0.2.10"]
                                   [org.clojure/tools.nrepl "0.2.10"]
                                   [com.cemerick/piggieback "0.2.0"]
-                                  [net.cgrand/parsley "0.9.3" :exclusion
+                                  [net.cgrand/parsley "0.9.3" :exclusions [org.clojure/clojure]]]
+                   :source-paths ["src" "test"]}
+             :repl [:dev {:source-paths ["src" "test" "repl"]
+                          :t
