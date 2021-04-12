@@ -30,4 +30,7 @@
                           :test-paths ["test"]}]}
   :prep-tasks ["javac" "compile"]
   :cljsbuild {:test-commands {"phantom" ["phantomjs" :runner "target/testable.js"]
-              
+                              "node" ["node" :node-runner "target/testable.js"]}
+              :builds [{:id "test"
+                        :source-paths ["src" "test"]
+                        :notify
