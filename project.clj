@@ -27,4 +27,7 @@
                                   [net.cgrand/parsley "0.9.3" :exclusions [org.clojure/clojure]]]
                    :source-paths ["src" "test"]}
              :repl [:dev {:source-paths ["src" "test" "repl"]
-                          :t
+                          :test-paths ["test"]}]}
+  :prep-tasks ["javac" "compile"]
+  :cljsbuild {:test-commands {"phantom" ["phantomjs" :runner "target/testable.js"]
+              
