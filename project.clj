@@ -33,4 +33,7 @@
                               "node" ["node" :node-runner "target/testable.js"]}
               :builds [{:id "test"
                         :source-paths ["src" "test"]
-                        :notify
+                        :notify-command ["phantomjs" :cljs.test/runner "target/testable.js"]
+                        :compiler {:output-to "target/testable.js"
+                                   :libs [""]
+                             
