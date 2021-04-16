@@ -38,4 +38,5 @@
                                    :libs [""]
                                         ; node doesn't like source maps I guess?
                                         ;:source-map "target/testable.js.map"
-                                   :optimiz
+                                   :optimizations :simple
+                                   :pretty-print true}}]})
