@@ -36,4 +36,6 @@
                         :notify-command ["phantomjs" :cljs.test/runner "target/testable.js"]
                         :compiler {:output-to "target/testable.js"
                                    :libs [""]
-                             
+                                        ; node doesn't like source maps I guess?
+                                        ;:source-map "target/testable.js.map"
+                                   :optimiz
