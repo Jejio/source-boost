@@ -11,4 +11,11 @@
   (:require [clojure.set :refer [difference union intersection]]))
 
 (defn without
-  "Returns set s wi
+  "Returns set s with x removed."
+  [s x] (difference s #{x}))
+
+(defn take-1
+  "Returns the pair [element, s'] where s' is set s with element removed."
+  [s] {:pre [(not (empty? s))]}
+  (let [item (first s)]
+    [item (
