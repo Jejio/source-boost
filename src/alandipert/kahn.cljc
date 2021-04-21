@@ -24,4 +24,9 @@
   "Returns the set of nodes in graph g for which there are no incoming
   edges, where g is a map of nodes to sets of nodes."
   [g]
-  (let [nodes (
+  (let [nodes (set (keys g))
+        have-incoming (apply union (vals g))]
+    (difference nodes have-incoming)))
+
+(defn normalize
+  "Returns g with empty outgoing edges added for nodes with incoming
