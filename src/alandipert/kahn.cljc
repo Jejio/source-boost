@@ -30,3 +30,7 @@
 
 (defn normalize
   "Returns g with empty outgoing edges added for nodes with incoming
+  edges only.  Example: {:a #{:b}} => {:a #{:b}, :b #{}}"
+  [g]
+  (let [have-incoming (apply union (vals g))]
+    (reduce #(if (get % %2) % (assoc % %2 #{})) g have-incomi
