@@ -33,4 +33,9 @@
   edges only.  Example: {:a #{:b}} => {:a #{:b}, :b #{}}"
   [g]
   (let [have-incoming (apply union (vals g))]
-    (reduce #(if (get % %2) % (assoc % %2 #{})) g have-incomi
+    (reduce #(if (get % %2) % (assoc % %2 #{})) g have-incoming)))
+
+(defn kahn-sort
+  "Proposes a topological sort for directed graph g using Kahn's
+   algorithm, where g is a map of nodes to sets of nodes. If g is
+   cyclic, returns nil."
