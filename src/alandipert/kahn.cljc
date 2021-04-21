@@ -18,4 +18,10 @@
   "Returns the pair [element, s'] where s' is set s with element removed."
   [s] {:pre [(not (empty? s))]}
   (let [item (first s)]
-    [item (
+    [item (without s item)]))
+
+(defn no-incoming
+  "Returns the set of nodes in graph g for which there are no incoming
+  edges, where g is a map of nodes to sets of nodes."
+  [g]
+  (let [nodes (
