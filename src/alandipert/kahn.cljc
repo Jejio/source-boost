@@ -46,4 +46,9 @@
      (when (every? empty? (vals g)) l)
      (let [[n s'] (take-1 s)
            m (g n)
-   
+           g' (reduce #(update-in % [n] without %2) g m)]
+       (recur g' (conj l n) (union s' (intersection (no-incoming g') m)))))))
+
+(comment
+  (def acyclic-g
+    {7
