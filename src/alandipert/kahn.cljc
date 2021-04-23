@@ -63,4 +63,9 @@
      3 #{8 10}
      11 #{2 9}
      8 #{9}
-     2 #{11}}) ;oops, a 
+     2 #{11}}) ;oops, a cycle!
+
+  (kahn-sort acyclic-g) ;=> [3 5 7 8 10 11 2 9]
+  (kahn-sort cyclic-g) ;=> nil
+
+  )
