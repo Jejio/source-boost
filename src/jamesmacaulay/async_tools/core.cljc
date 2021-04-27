@@ -9,3 +9,10 @@
   #?(:cljs (:require-macros [cljs.core.async.macros :refer [go go-loop]])))
 
 (defn concat
+  [& chs]
+  (let [out (chan)]
+    (go-loop [remaining chs]
+      (let [ch (first remaining)]
+        (if (nil? ch)
+          (async/close! out)
+         
