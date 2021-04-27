@@ -15,4 +15,12 @@
       (let [ch (first remaining)]
         (if (nil? ch)
           (async/close! out)
-         
+          (let [v (<! ch)]
+            (if (nil? v)
+              (recur (next remaining))
+              (do
+                (>! out v)
+                (recur remaining)))))))
+    out))
+
+(
