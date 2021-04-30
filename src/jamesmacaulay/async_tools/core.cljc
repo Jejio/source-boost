@@ -34,4 +34,14 @@
 
 (defn log-mult
   [mult]
-  (do-effects println (async/tap mult 
+  (do-effects println (async/tap mult (chan))))
+
+(defn log-channel
+  [ch]
+  (async/map (fn [x] (println x) x) [ch]))
+
+(deftype ConstantReadPort [boxed-value]
+  impl/ReadPort
+  (take! [_ _] boxed-value))
+
+(de
