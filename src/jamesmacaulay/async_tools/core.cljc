@@ -23,4 +23,15 @@
                 (recur remaining)))))))
     out))
 
-(
+(defn do-effects
+  [f! ch]
+  (go-loop []
+    (let [v (<! ch)]
+      (when-not (nil? v)
+        (f! v)
+        (recur))))
+  ch)
+
+(defn log-mult
+  [mult]
+  (do-effects println (async/tap mult 
