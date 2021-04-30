@@ -44,4 +44,14 @@
   impl/ReadPort
   (take! [_ _] boxed-value))
 
-(de
+(defn constant
+  [x]
+  (ConstantReadPort. (channels/box x)))
+
+(defn readport?
+  [x]
+  (satisfies? impl/ReadPort x))
+
+(defn cast-as-readport
+  [x]
+  (if (readport? x) x (constant x)))
