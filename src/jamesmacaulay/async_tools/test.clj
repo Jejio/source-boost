@@ -3,4 +3,10 @@
             [cemerick.cljs.test]
             [clojure.test]))
 
-(defmacro deftest-as
+(defmacro deftest-async
+  [name & body]
+  (let [deftest-sym (if (:ns &env)
+                      'cemerick.cljs.test/deftest
+                      'clojure.test/deftest)]
+    `(~deftest-sym
+       ~(with-meta name
