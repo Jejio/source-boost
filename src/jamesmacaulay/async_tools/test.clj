@@ -9,4 +9,7 @@
                       'cemerick.cljs.test/deftest
                       'clojure.test/deftest)]
     `(~deftest-sym
-       ~(with-meta name
+       ~(with-meta name {:async true})
+       (-> (do ~@body)
+           tools/cast-as-readport
+           cemerick.cljs.test/block-or-done))))
