@@ -6,4 +6,7 @@
                      [clojure.set]
                      [alandipert.kahn :as kahn]
                      [cljs.core.async :as async :refer [<! >!]]
-  
+                     [cljs.core.async.impl.protocols :as async-impl])
+
+     :clj (:require [jamesmacaulay.async-tools.core :as tools]
+                    [jamesmacaulay.zelkova.
