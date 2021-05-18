@@ -9,4 +9,8 @@
                      [cljs.core.async.impl.protocols :as async-impl])
 
      :clj (:require [jamesmacaulay.async-tools.core :as tools]
-                    [jamesmacaulay.zelkova.
+                    [jamesmacaulay.zelkova.impl.time :as time]
+                    [clojure.zip :as zip]
+                    [clojure.set]
+                    [alandipert.kahn :as kahn]
+         
