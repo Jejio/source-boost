@@ -15,4 +15,10 @@
                     [alandipert.kahn :as kahn]
                     [clojure.core.async :as async :refer [go go-loop <! >!]]
                     [clojure.core.async.impl.protocols :as async-impl]))
-  #?(:cljs (
+  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go go-loop]])))
+
+(defprotocol BoxedValueProtocol
+  (value [boxed]))
+
+(defprotocol EventProtocol
+  "Events come in from \"the outside world\" a
