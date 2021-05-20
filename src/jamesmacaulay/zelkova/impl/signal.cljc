@@ -21,4 +21,10 @@
   (value [boxed]))
 
 (defprotocol EventProtocol
-  "Events come in from \"the outside world\" a
+  "Events come in from \"the outside world\" and get transformed into Messages by input signal nodes"
+  (topic [event])
+  (timestamp [event])
+  (record-timestamp [event timestamp]))
+
+(defprotocol MessageProtocol
+  "Messa
