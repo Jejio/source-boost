@@ -27,4 +27,5 @@
   (record-timestamp [event timestamp]))
 
 (defprotocol MessageProtocol
-  "Messa
+  "Messages are propagated through the signal graph, and can either be \"fresh\" or \"cached\"."
+  (fresh? [msg] "returns `true` if the message represents a fresh value, `false` otherwi
