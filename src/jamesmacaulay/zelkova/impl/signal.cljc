@@ -45,4 +45,13 @@
   (->Event topic value nil))
 
 ; a message representing a "fresh" signal value
-(defrec
+(defrecord Fresh
+  [value]
+  BoxedValueProtocol
+  (value [_] value)
+  MessageProtocol
+  (fresh? [_] true))
+
+; a message representing a "cached" signal value
+(defrecord Cached
+  [v
