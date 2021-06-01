@@ -54,4 +54,16 @@
 
 ; a message representing a "cached" signal value
 (defrecord Cached
-  [v
+  [value]
+  BoxedValueProtocol
+  (value [_] value)
+  MessageProtocol
+  (fresh? [_] false))
+
+(defn fresh
+  [value]
+  (->Fresh value))
+
+(defn cached
+  [value]
+  
