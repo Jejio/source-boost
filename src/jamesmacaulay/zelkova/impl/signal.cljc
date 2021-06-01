@@ -38,3 +38,11 @@
   EventProtocol
   (topic [_] topic)
   (timestamp [_] timestamp)
+  (record-timestamp [e t] (assoc e :timestamp t)))
+
+(defn make-event
+  [topic value]
+  (->Event topic value nil))
+
+; a message representing a "fresh" signal value
+(defrec
