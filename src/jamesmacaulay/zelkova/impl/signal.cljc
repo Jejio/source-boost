@@ -66,4 +66,10 @@
 
 (defn cached
   [value]
-  
+  (->Cached value))
+
+(def ^{:doc "A transducer which takes in batches of signal graph messages and pipes out fresh values."}
+  fresh-values
+  (comp cat
+        (filter fresh?)
+       
