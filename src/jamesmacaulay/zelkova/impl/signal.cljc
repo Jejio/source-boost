@@ -78,4 +78,12 @@
 
 (defprotocol SignalProtocol
   (input? [s])
-  (signal-deps [s] "returns the set of \"parent\" signals on which this
+  (signal-deps [s] "returns the set of \"parent\" signals on which this signal depends")
+  (parents-map [s])
+  (kids-map [s])
+  (topsort [s])
+  (inputs-by-topic [s])
+  (kid-indexes-map [s]))
+
+(defn signal?
+  "returns `true` if the argument satisfies `Si
