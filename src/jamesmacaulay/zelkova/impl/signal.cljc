@@ -86,4 +86,9 @@
   (kid-indexes-map [s]))
 
 (defn signal?
-  "returns `true` if the argument satisfies `Si
+  "returns `true` if the argument satisfies `SignalProtocol`, `false` otherwise"
+  [x]
+  (satisfies? SignalProtocol x))
+
+(defn- node-graph-zipper
+  "Takes a signal and returns a zipper which can be used to travers
