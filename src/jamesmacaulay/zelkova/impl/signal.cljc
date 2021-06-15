@@ -72,4 +72,10 @@
   fresh-values
   (comp cat
         (filter fresh?)
-       
+        (map value)))
+
+; compiling graphs:
+
+(defprotocol SignalProtocol
+  (input? [s])
+  (signal-deps [s] "returns the set of \"parent\" signals on which this
