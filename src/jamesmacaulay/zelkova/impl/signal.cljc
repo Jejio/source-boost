@@ -91,4 +91,11 @@
   (satisfies? SignalProtocol x))
 
 (defn- node-graph-zipper
-  "Takes a signal and returns a zipper which can be used to travers
+  "Takes a signal and returns a zipper which can be used to traverse the signal graph."
+  [output-node]
+  (zip/zipper (constantly true)
+              (comp seq signal-deps)
+              nil
+              output-node))
+
+(defn- ski
