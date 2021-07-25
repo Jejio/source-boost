@@ -98,4 +98,10 @@
               nil
               output-node))
 
-(defn- ski
+(defn- skip-subtree
+  "Returns a new zipper location that skips the whole subtree at `loc`."
+  [loc]
+  (or (zip/right loc)
+      (loop [p loc]
+        (if (zip/up p)
+          (or (zip/right
