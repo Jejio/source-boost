@@ -104,4 +104,10 @@
   (or (zip/right loc)
       (loop [p loc]
         (if (zip/up p)
-          (or (zip/right
+          (or (zip/right (zip/up p))
+              (recur (zip/up p)))
+          [(zip/node p) :end]))))
+
+(defn calculate-dependency-maps
+  "Takes a signal and returns a map of two maps:
+    :parents-map i
