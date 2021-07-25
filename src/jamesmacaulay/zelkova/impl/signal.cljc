@@ -110,4 +110,9 @@
 
 (defn calculate-dependency-maps
   "Takes a signal and returns a map of two maps:
-    :parents-map i
+    :parents-map is a map of signals to their parents,
+    :kids-map is a map of signals to their children."
+  [signal]
+  (loop [parents-map {}
+         kids-map {signal #{}}
+     
