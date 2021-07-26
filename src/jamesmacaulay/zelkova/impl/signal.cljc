@@ -115,4 +115,10 @@
   [signal]
   (loop [parents-map {}
          kids-map {signal #{}}
-     
+         loc (node-graph-zipper signal)]
+    (cond
+      (zip/end? loc)
+      {:parents-map parents-map
+       :kids-map kids-map}
+
+      (contains? parents-map (zi
