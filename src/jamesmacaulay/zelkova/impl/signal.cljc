@@ -121,4 +121,10 @@
       {:parents-map parents-map
        :kids-map kids-map}
 
-      (contains? parents-map (zi
+      (contains? parents-map (zip/node loc))
+      (recur parents-map kids-map (skip-subtree loc))
+
+      :else
+      (let [this-sig (zip/node loc)
+            parents (signal-deps this-sig)
+            ne
