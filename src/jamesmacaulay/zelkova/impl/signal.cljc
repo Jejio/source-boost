@@ -127,4 +127,9 @@
       :else
       (let [this-sig (zip/node loc)
             parents (signal-deps this-sig)
-            ne
+            next-sig (zip/next loc)]
+        (recur
+          (assoc parents-map this-sig parents)
+          (merge-with clojure.set/union
+                      kids-map
+             
