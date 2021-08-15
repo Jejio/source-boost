@@ -140,4 +140,10 @@
   (->> pm (kahn/kahn-sort) (reverse) (into [])))
 
 (defn topsort->topic-map
-  [sort
+  [sorted-sigs]
+  (reduce (fn [m sig]
+            (if-let [topic (:relayed-event-topic sig)]
+              (assoc m topic (conj (get m topic []) sig))
+              m))
+          {}
+   
