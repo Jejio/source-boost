@@ -132,4 +132,12 @@
           (assoc parents-map this-sig parents)
           (merge-with clojure.set/union
                       kids-map
-             
+                      (zipmap parents (repeat #{this-sig})))
+          next-sig)))))
+
+(defn parents-map->topsort
+  [pm]
+  (->> pm (kahn/kahn-sort) (reverse) (into [])))
+
+(defn topsort->topic-map
+  [sort
