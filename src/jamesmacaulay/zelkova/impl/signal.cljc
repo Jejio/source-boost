@@ -151,4 +151,8 @@
 (defn build-kid-indexes-map
   [kids-map sorted-sigs]
   (let [signal->index (zipmap sorted-sigs (range))
-        signals->sorted-index-set #(into (sorted
+        signals->sorted-index-set #(into (sorted-set) (map signal->index) %)]
+    (zipmap (keys kids-map)
+            (map signals->sorted-index-set (vals kids-map)))))
+
+(defrecord Signal
