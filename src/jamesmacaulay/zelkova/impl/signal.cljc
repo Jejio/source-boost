@@ -146,4 +146,9 @@
               (assoc m topic (conj (get m topic []) sig))
               m))
           {}
-   
+          sorted-sigs))
+
+(defn build-kid-indexes-map
+  [kids-map sorted-sigs]
+  (let [signal->index (zipmap sorted-sigs (range))
+        signals->sorted-index-set #(into (sorted
