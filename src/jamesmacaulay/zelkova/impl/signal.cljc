@@ -163,4 +163,6 @@
   (let [delayed-dep-maps (delay (calculate-dependency-maps sig))
         delayed-parents-map (delay (:parents-map @delayed-dep-maps))
         delayed-kids-map (delay (:kids-map @delayed-dep-maps))
-        delayed-topsort (delay (parents-map->topsort @delayed-
+        delayed-topsort (delay (parents-map->topsort @delayed-parents-map))
+        delayed-topic-map (delay (topsort->topic-map @delayed-topsort))
+        delayed-kid-indexes-map (delay (build-kid-indexes-map @delayed-kids-map @delayed-tops
