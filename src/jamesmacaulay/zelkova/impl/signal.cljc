@@ -155,4 +155,10 @@
     (zipmap (keys kids-map)
             (map signals->sorted-index-set (vals kids-map)))))
 
-(defrecord Signal
+(defrecord SignalDefinitionMetadata
+  [parents-map kids-map topsort kid-indexes-map inputs-by-topic])
+
+(defn- attach-delayed-metadata
+  [sig]
+  (let [delayed-dep-maps (delay (calculate-dependency-maps sig))
+   
