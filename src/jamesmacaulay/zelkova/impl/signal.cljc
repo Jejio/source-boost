@@ -165,4 +165,7 @@
         delayed-kids-map (delay (:kids-map @delayed-dep-maps))
         delayed-topsort (delay (parents-map->topsort @delayed-parents-map))
         delayed-topic-map (delay (topsort->topic-map @delayed-topsort))
-        delayed-kid-indexes-map (delay (build-kid-indexes-map @delayed-kids-map @delayed-tops
+        delayed-kid-indexes-map (delay (build-kid-indexes-map @delayed-kids-map @delayed-topsort))]
+    (with-meta sig (->SignalDefinitionMetadata delayed-parents-map
+                                               delayed-kids-map
+          
