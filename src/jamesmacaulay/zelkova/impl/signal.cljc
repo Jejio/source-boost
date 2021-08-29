@@ -161,4 +161,6 @@
 (defn- attach-delayed-metadata
   [sig]
   (let [delayed-dep-maps (delay (calculate-dependency-maps sig))
-   
+        delayed-parents-map (delay (:parents-map @delayed-dep-maps))
+        delayed-kids-map (delay (:kids-map @delayed-dep-maps))
+        delayed-topsort (delay (parents-map->topsort @delayed-
