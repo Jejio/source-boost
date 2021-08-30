@@ -170,4 +170,9 @@
                                                delayed-kids-map
                                                delayed-topsort
                                                delayed-kid-indexes-map
-                                               del
+                                               delayed-topic-map))))
+
+(defn- delegate-to-channel
+  [f ch & args]
+  (assert (not (nil? ch))
+          "This signal is not a valid write-port, use the `jamesmacaulay.zelkova.signal/write-port` co
