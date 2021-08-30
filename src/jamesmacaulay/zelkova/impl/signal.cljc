@@ -168,4 +168,6 @@
         delayed-kid-indexes-map (delay (build-kid-indexes-map @delayed-kids-map @delayed-topsort))]
     (with-meta sig (->SignalDefinitionMetadata delayed-parents-map
                                                delayed-kids-map
-          
+                                               delayed-topsort
+                                               delayed-kid-indexes-map
+                                               del
