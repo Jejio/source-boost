@@ -175,4 +175,8 @@
 (defn- delegate-to-channel
   [f ch & args]
   (assert (not (nil? ch))
-          "This signal is not a valid write-port, use the `jamesmacaulay.zelkova.signal/write-port` co
+          "This signal is not a valid write-port, use the `jamesmacaulay.zelkova.signal/write-port` constructor if you want to treat this signal like a channel.")
+  (apply f ch args))
+
+(defrecord SignalDefinition
+  [init-fn sources relayed-event-topic msg-xform deps event-sour
