@@ -186,4 +186,10 @@
   (close! [_] (delegate-to-channel async-impl/close! write-port-channel))
   (closed? [_] (delegate-to-channel async-impl/closed? write-port-channel))
   SignalProtocol
-  (input? [_] (
+  (input? [_] (some #{:events} sources))
+  (signal-deps [_]
+    (into #{}
+          (filter signal?)
+          (or deps sources)))
+  (parents-map [s] (-> s meta :parents-map deref))
+ 
