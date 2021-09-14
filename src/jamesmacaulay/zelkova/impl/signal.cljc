@@ -183,4 +183,7 @@
   async-impl/WritePort
   (put! [_ val fn1-handler] (delegate-to-channel async-impl/put! write-port-channel val fn1-handler))
   async-impl/Channel
-  (clo
+  (close! [_] (delegate-to-channel async-impl/close! write-port-channel))
+  (closed? [_] (delegate-to-channel async-impl/closed? write-port-channel))
+  SignalProtocol
+  (input? [_] (
