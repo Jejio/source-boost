@@ -179,4 +179,8 @@
   (apply f ch args))
 
 (defrecord SignalDefinition
-  [init-fn sources relayed-event-topic msg-xform deps event-sour
+  [init-fn sources relayed-event-topic msg-xform deps event-sources write-port-channel]
+  async-impl/WritePort
+  (put! [_ val fn1-handler] (delegate-to-channel async-impl/put! write-port-channel val fn1-handler))
+  async-impl/Channel
+  (clo
