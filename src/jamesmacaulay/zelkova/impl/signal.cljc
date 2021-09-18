@@ -204,4 +204,6 @@
     (assoc opts
       :sources [:events]
       :msg-xform (comp (map (fn [[event _prev _msgs]]
-       
+                              (when (= relayed-topic (topic event))
+                                (fresh (value event)))))
+                       (remo
