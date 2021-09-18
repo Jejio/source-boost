@@ -199,3 +199,9 @@
 
 (defn- setup-event-relay
   "Takes a topic, and returns an input signal which relays matching events as messages to its children"
+  [opts]
+  (if-let [relayed-topic (:relayed-event-topic opts)]
+    (assoc opts
+      :sources [:events]
+      :msg-xform (comp (map (fn [[event _prev _msgs]]
+       
