@@ -192,4 +192,7 @@
           (filter signal?)
           (or deps sources)))
   (parents-map [s] (-> s meta :parents-map deref))
- 
+  (kids-map [s] (-> s meta :kids-map deref))
+  (topsort [s] (-> s meta :topsort deref))
+  (inputs-by-topic [s] (-> s meta :inputs-by-topic deref))
+  (kid-indexes-map [s] (-> s meta :kid
