@@ -195,4 +195,7 @@
   (kids-map [s] (-> s meta :kids-map deref))
   (topsort [s] (-> s meta :topsort deref))
   (inputs-by-topic [s] (-> s meta :inputs-by-topic deref))
-  (kid-indexes-map [s] (-> s meta :kid
+  (kid-indexes-map [s] (-> s meta :kid-indexes-map deref)))
+
+(defn- setup-event-relay
+  "Takes a topic, and returns an input signal which relays matching events as messages to its children"
