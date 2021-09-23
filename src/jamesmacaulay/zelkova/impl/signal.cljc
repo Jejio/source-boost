@@ -206,4 +206,13 @@
       :msg-xform (comp (map (fn [[event _prev _msgs]]
                               (when (= relayed-topic (topic event))
                                 (fresh (value event)))))
-                       (remo
+                       (remove nil?)))
+    opts))
+
+(defn make-signal
+  "Takes a map of opts and returns a signal."
+  [opts]
+  (-> opts
+      (setup-event-relay)
+      (map->SignalDefinition)
+      (attac
