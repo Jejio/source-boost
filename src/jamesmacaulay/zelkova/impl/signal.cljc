@@ -215,4 +215,12 @@
   (-> opts
       (setup-event-relay)
       (map->SignalDefinition)
-      (attac
+      (attach-delayed-metadata)))
+
+; dealing with multiple outputs:
+
+(defn- ensure-sequential
+  "Wraps `x` in a vector, if necessary, returning an empty vector if `x` is `nil`."
+  [x]
+  (cond
+    (sequential? x) 
