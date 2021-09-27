@@ -223,4 +223,10 @@
   "Wraps `x` in a vector, if necessary, returning an empty vector if `x` is `nil`."
   [x]
   (cond
-    (sequential? x) 
+    (sequential? x) x
+    (nil? x) []
+    :else [x]))
+
+(defn- pad
+  "Takes a collection of message batches, presumably from some corresponding collection
+  of signals. Pads each batch, when necessary, w
