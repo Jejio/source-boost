@@ -233,4 +233,8 @@
   in the batch, such that the returned batches are all the same size."
   [msg-batches]
   (if (>= 1 (count msg-batches))
-    msg-ba
+    msg-batches
+    (let [max-count (reduce max (map count msg-batches))
+          pad (fn [msgs]
+                (->> [msgs (-> msgs last value cached repeat)]
+                     (into []
