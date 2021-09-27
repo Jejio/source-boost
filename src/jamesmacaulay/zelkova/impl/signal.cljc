@@ -229,4 +229,8 @@
 
 (defn- pad
   "Takes a collection of message batches, presumably from some corresponding collection
-  of signals. Pads each batch, when necessary, w
+  of signals. Pads each batch, when necessary, with cached versions of the last message
+  in the batch, such that the returned batches are all the same size."
+  [msg-batches]
+  (if (>= 1 (count msg-batches))
+    msg-ba
