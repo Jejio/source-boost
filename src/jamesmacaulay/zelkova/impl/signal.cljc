@@ -241,4 +241,10 @@
       (map pad msg-batches))))
 
 (defn- transpose
-  "Takes a collection of message batches and returns a sequence of vectors of corresp
+  "Takes a collection of message batches and returns a sequence of vectors of corresponding
+  messages from each batch."
+  [msg-batches]
+  (apply map vector msg-batches))
+
+(defn- wrap-msg-xform
+  "Takes a signal's `msg-fn` and wraps it to provide various behaviour
