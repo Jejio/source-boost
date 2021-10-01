@@ -237,4 +237,8 @@
     (let [max-count (reduce max (map count msg-batches))
           pad (fn [msgs]
                 (->> [msgs (-> msgs last value cached repeat)]
-                     (into []
+                     (into [] (comp cat (take max-count)))))]
+      (map pad msg-batches))))
+
+(defn- transpose
+  "Takes a collection of message batches and returns a sequence of vectors of corresp
