@@ -247,4 +247,7 @@
   (apply map vector msg-batches))
 
 (defn- wrap-msg-xform
-  "Takes a signal's `msg-fn` and wraps it to provide various behaviour
+  "Takes a signal's `msg-fn` and wraps it to provide various behaviours:
+    * return values are turned into sequences with `ensure-sequential`
+    * message batches from each signal are padded and transposed, and `msg-fn` is called
+  
