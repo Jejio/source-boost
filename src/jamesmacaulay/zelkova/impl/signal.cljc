@@ -250,4 +250,6 @@
   "Takes a signal's `msg-fn` and wraps it to provide various behaviours:
     * return values are turned into sequences with `ensure-sequential`
     * message batches from each signal are padded and transposed, and `msg-fn` is called
-  
+      once for each vector of messages in the resulting series, as if each were the result
+      of a separate event.
+    * when `msg-fn` returns `nil` or an empty sequence, the previous va
