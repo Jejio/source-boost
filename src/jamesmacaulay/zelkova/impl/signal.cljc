@@ -252,4 +252,9 @@
     * message batches from each signal are padded and transposed, and `msg-fn` is called
       once for each vector of messages in the resulting series, as if each were the result
       of a separate event.
-    * when `msg-fn` returns `nil` or an empty sequence, the previous va
+    * when `msg-fn` returns `nil` or an empty sequence, the previous value is returned as a
+      cached value."
+  [msg-xform]
+  (let [msg-fn (fn [args] (sequence msg-xform [args]))]
+    (fn [prev event-and-msg-batches]
+      (let [input-series (-> event-
