@@ -257,4 +257,7 @@
   [msg-xform]
   (let [msg-fn (fn [args] (sequence msg-xform [args]))]
     (fn [prev event-and-msg-batches]
-      (let [input-series (-> event-
+      (let [input-series (-> event-and-msg-batches pad transpose)
+            output-series (reduce (fn [acc [event & msgs]]
+                                    (let [prev (value (peek acc))
+                     
