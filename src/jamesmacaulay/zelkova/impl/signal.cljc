@@ -260,4 +260,6 @@
       (let [input-series (-> event-and-msg-batches pad transpose)
             output-series (reduce (fn [acc [event & msgs]]
                                     (let [prev (value (peek acc))
-                     
+                                          msgs (vec msgs)
+                                          new-msgs (msg-fn [event prev msgs])]
+                                      (into acc new-ms
