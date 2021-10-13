@@ -267,3 +267,11 @@
                                   input-series)]
         (if (= 1 (count output-series))
           output-series
+          (subvec output-series 1))))))
+
+; wiring up channels:
+
+(defn- tap-signal
+  [mult-map source]
+  (let [mult (get mult-map source)]
+    (async/tap mult (async/chan))))
