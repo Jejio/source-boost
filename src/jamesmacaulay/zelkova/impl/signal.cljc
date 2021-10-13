@@ -262,4 +262,8 @@
                                     (let [prev (value (peek acc))
                                           msgs (vec msgs)
                                           new-msgs (msg-fn [event prev msgs])]
-                                      (into acc new-ms
+                                      (into acc new-msgs)))
+                                  [(cached prev)]
+                                  input-series)]
+        (if (= 1 (count output-series))
+          output-series
