@@ -283,4 +283,10 @@
              (map (partial tap-signal mult-map)))
        (async/map vector)))
 
-(de
+(defn- spawn-message-loop!
+  [init msg-xform c-in c-out]
+  (let [wrapped-msg-fn (wrap-msg-xform msg-xform)]
+    (go-loop [prev init]
+      (let [in-val (async/<! c-in)]
+        (if (nil? in-val)
+   
