@@ -275,3 +275,12 @@
   [mult-map source]
   (let [mult (get mult-map source)]
     (async/tap mult (async/chan))))
+
+(defn- tap-signals
+  [mult-map sources]
+  (->> sources
+       (into [(tap-signal mult-map :events)]
+             (map (partial tap-signal mult-map)))
+       (async/map vector)))
+
+(de
