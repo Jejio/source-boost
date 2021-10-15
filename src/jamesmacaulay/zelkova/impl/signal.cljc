@@ -289,4 +289,9 @@
     (go-loop [prev init]
       (let [in-val (async/<! c-in)]
         (if (nil? in-val)
-   
+          (async/close! c-out)
+          (let [out-val (wrapped-msg-fn prev in-val)]
+            (>! c-out out-val)
+            (recur (value (last out-val)))))))))
+
+(defn- build
