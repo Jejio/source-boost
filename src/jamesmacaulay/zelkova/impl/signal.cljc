@@ -294,4 +294,8 @@
             (>! c-out out-val)
             (recur (value (last out-val)))))))))
 
-(defn- build
+(defn- build-message-mult
+  [mult-map {:keys [init-fn sources msg-xform]} live-graph opts]
+  (let [c-in (tap-signals mult-map sources)
+        c-out (async/chan)]
+ 
