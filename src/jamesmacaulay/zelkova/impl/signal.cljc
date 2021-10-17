@@ -303,3 +303,8 @@
 
 (defn build-message-mult-map
   [sorted-signals events-mult live-graph opts]
+  (reduce (fn [mult-map signal]
+            (assoc mult-map
+              signal (build-message-mult mult-map signal live-graph opts)))
+          {:events events-mult}
+          sorted-signals)
