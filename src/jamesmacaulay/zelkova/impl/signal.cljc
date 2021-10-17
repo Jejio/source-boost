@@ -298,4 +298,8 @@
   [mult-map {:keys [init-fn sources msg-xform]} live-graph opts]
   (let [c-in (tap-signals mult-map sources)
         c-out (async/chan)]
- 
+    (spawn-message-loop! (init-fn live-graph opts) msg-xform c-in c-out)
+    (async/mult c-out)))
+
+(defn build-message-mult-map
+  [sorted-signals events-mult live-graph opts]
