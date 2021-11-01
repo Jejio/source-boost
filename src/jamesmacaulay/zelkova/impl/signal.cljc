@@ -315,4 +315,11 @@
 
 (defprotocol LiveChannelGraphProtocol
   (signal-mult [g sig])
-  (conne
+  (connect-to-world [g])
+  (init [g]))
+
+(defrecord LiveChannelGraph
+  [definition events-channel mult-map output-values-mult opts]
+  LiveChannelGraphProtocol
+  (signal-mult [_ sig] (get mult-map sig))
+  (conn
