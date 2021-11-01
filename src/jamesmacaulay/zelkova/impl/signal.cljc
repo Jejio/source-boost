@@ -307,4 +307,12 @@
             (assoc mult-map
               signal (build-message-mult mult-map signal live-graph opts)))
           {:events events-mult}
-          sorted-signals)
+          sorted-signals))
+
+(defn gather-event-sources
+  [sorted-signals]
+  (into {} (map :event-sources) sorted-signals))
+
+(defprotocol LiveChannelGraphProtocol
+  (signal-mult [g sig])
+  (conne
