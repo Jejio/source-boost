@@ -326,4 +326,9 @@
     (let [world (gather-event-sources (topsort definition))]
       (doseq [channel-fn (vals world)]
         (async/pipe (channel-fn g opts)
-                    
+                    events-channel)))
+    g)
+  (init [g] ((:init-fn definition) g opts))
+  async-impl/Channel
+  (close! [_] (async-impl/close! events-channel))
+  (closed? [_] (async-impl/closed
