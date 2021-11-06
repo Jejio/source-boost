@@ -322,4 +322,8 @@
   [definition events-channel mult-map output-values-mult opts]
   LiveChannelGraphProtocol
   (signal-mult [_ sig] (get mult-map sig))
-  (conn
+  (connect-to-world [g]
+    (let [world (gather-event-sources (topsort definition))]
+      (doseq [channel-fn (vals world)]
+        (async/pipe (channel-fn g opts)
+                    
