@@ -331,4 +331,8 @@
   (init [g] ((:init-fn definition) g opts))
   async-impl/Channel
   (close! [_] (async-impl/close! events-channel))
-  (closed? [_] (async-impl/closed
+  (closed? [_] (async-impl/closed? events-channel))
+  async-impl/WritePort
+  (put! [_ val fn1] (async-impl/put! events-channel val fn1))
+  async/Mult
+  (tap* [g ch close?] (async/tap* output-values-mul
