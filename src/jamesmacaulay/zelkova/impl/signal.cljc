@@ -341,4 +341,10 @@
 
 (defprotocol SignalLike
   (spawn* [x opts])
-  (pipe-t
+  (pipe-to-atom* [x a ks]))
+
+(def ^:private events-xform
+  (map (comp (partial map
+                      (fn [event]
+                        (if (nil? (timestamp event))
+                          (record-
