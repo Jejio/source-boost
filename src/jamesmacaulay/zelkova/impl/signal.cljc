@@ -335,4 +335,10 @@
   async-impl/WritePort
   (put! [_ val fn1] (async-impl/put! events-channel val fn1))
   async/Mult
-  (tap* [g ch close?] (async/tap* output-values-mul
+  (tap* [g ch close?] (async/tap* output-values-mult ch close?))
+  (untap* [g ch] (async/untap* output-values-mult ch))
+  (untap-all* [g] (async/untap-all* output-values-mult)))
+
+(defprotocol SignalLike
+  (spawn* [x opts])
+  (pipe-t
