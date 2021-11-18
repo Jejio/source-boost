@@ -354,4 +354,9 @@
 (defn- build-output-values-mult
   [mult-map output-sig]
   (-> (get mult-map output-sig)
-  
+      (async/tap (async/chan 1 fresh-values))
+      (async/mult)))
+
+(extend-protocol SignalLike
+  LiveChannelGraph
+  (spawn* [g opts] (spawn* (:signal g) opts)
