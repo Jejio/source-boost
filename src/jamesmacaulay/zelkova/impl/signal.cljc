@@ -347,4 +347,11 @@
   (map (comp (partial map
                       (fn [event]
                         (if (nil? (timestamp event))
-                          (record-
+                          (record-timestamp event (time/now))
+                          event)))
+             ensure-sequential)))
+
+(defn- build-output-values-mult
+  [mult-map output-sig]
+  (-> (get mult-map output-sig)
+  
