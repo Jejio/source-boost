@@ -359,4 +359,8 @@
 
 (extend-protocol SignalLike
   LiveChannelGraph
-  (spawn* [g opts] (spawn* (:signal g) opts)
+  (spawn* [g opts] (spawn* (:signal g) opts))
+  (pipe-to-atom* [g atm ks]
+    (tools/do-effects (if (seq ks)
+                        (partial swap! atm assoc-in ks)
+                        (partial reset! atm
