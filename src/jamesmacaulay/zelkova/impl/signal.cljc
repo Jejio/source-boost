@@ -373,4 +373,11 @@
           mult-map (build-message-mult-map (topsort s) events-mult s opts)
           output-values-mult (build-output-values-mult mult-map s)]
       (-> s
-       
+          (->LiveChannelGraph events-channel mult-map output-values-mult opts)
+          (connect-to-world))))
+  (pipe-to-atom* [s atm ks]
+    (pipe-to-atom* (spawn* s nil) atm ks)))
+
+
+
+(defmu
