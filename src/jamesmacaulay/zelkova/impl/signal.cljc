@@ -363,4 +363,10 @@
   (pipe-to-atom* [g atm ks]
     (tools/do-effects (if (seq ks)
                         (partial swap! atm assoc-in ks)
-                        (partial reset! atm
+                        (partial reset! atm))
+                      (async/tap g (async/chan)))
+    atm)
+  SignalDefinition
+  (spawn* [s opts]
+    (let [events-channel (async/chan 1 events-xform)
+          events-mult (async/mult ev
