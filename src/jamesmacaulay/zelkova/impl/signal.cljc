@@ -369,4 +369,8 @@
   SignalDefinition
   (spawn* [s opts]
     (let [events-channel (async/chan 1 events-xform)
-          events-mult (async/mult ev
+          events-mult (async/mult events-channel)
+          mult-map (build-message-mult-map (topsort s) events-mult s opts)
+          output-values-mult (build-output-values-mult mult-map s)]
+      (-> s
+       
