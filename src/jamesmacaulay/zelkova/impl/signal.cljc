@@ -380,4 +380,8 @@
 
 
 
-(defmu
+(defmulti value-source->events-fn
+  "Takes some asynchronous `source` of values, plus an event `topic`, and returns
+an event-source function. `source` may be one of the following:
+
+* a funct
