@@ -384,4 +384,8 @@
   "Takes some asynchronous `source` of values, plus an event `topic`, and returns
 an event-source function. `source` may be one of the following:
 
-* a funct
+* a function taking a live graph and an options map, and returns a channel of values
+* a channel of values
+* a mult of some such value channel
+
+The returned event-s
