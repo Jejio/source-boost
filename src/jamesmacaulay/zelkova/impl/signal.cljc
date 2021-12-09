@@ -388,4 +388,8 @@ an event-source function. `source` may be one of the following:
 * a channel of values
 * a mult of some such value channel
 
-The returned event-s
+The returned event-source function has the same signature as the functions that can
+be supplied for the `source` argument, but the values are wrapped as Events."
+  (fn [source topic]
+    (cond
+      (satisfies? async
