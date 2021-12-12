@@ -399,4 +399,8 @@ be supplied for the `source` argument, but the values are wrapped as Events."
 (defmethod value-source->events-fn :ifn
   [src-fn topic]
   (fn [graph opts]
- 
+    (let [ch (src-fn graph opts)]
+      (async/pipe ch (async/chan 1 (map (partial make-event topic)))))))
+
+(defmethod value-source->events-fn :mult
+  [src
