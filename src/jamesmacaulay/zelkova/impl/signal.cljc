@@ -403,4 +403,9 @@ be supplied for the `source` argument, but the values are wrapped as Events."
       (async/pipe ch (async/chan 1 (map (partial make-event topic)))))))
 
 (defmethod value-source->events-fn :mult
-  [src
+  [src-mult topic]
+  (value-source->events-fn (fn [_ _] (async/tap src-mult (async/chan)))
+                           topic))
+
+(defmethod value-source->events-fn :readport
+  [src-c
