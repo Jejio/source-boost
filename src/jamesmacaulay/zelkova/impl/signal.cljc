@@ -392,4 +392,11 @@ The returned event-source function has the same signature as the functions that 
 be supplied for the `source` argument, but the values are wrapped as Events."
   (fn [source topic]
     (cond
-      (satisfies? async
+      (satisfies? async/Mult source) :mult
+      (satisfies? async-impl/ReadPort source) :readport
+      (ifn? source) :ifn)))
+
+(defmethod value-source->events-fn :ifn
+  [src-fn topic]
+  (fn [graph opts]
+ 
