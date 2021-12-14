@@ -408,4 +408,6 @@ be supplied for the `source` argument, but the values are wrapped as Events."
                            topic))
 
 (defmethod value-source->events-fn :readport
-  [src-c
+  [src-chan topic]
+  (value-source->events-fn (async/mult src-chan)
+                           topic))
