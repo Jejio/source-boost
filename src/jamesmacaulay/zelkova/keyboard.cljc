@@ -12,4 +12,13 @@
    (defn- listen
      [el type & args]
      (let [out (apply async/chan 1 args)]
-       (events/listen el type (fn 
+       (events/listen el type (fn [e] (async/put! out e)))
+       out)))
+
+(defn- keydown-channel
+  [graph opts]
+  #?(:cljs (listen js/document "keydown")
+     :clj (async/chan)))
+
+(defn- keyup-channel
+  [graph opt
