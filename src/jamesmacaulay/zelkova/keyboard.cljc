@@ -28,4 +28,12 @@
 (defn- blur-channel
   [graph opts]
   #?(:cljs (listen js/window "blur")
-     :clj (
+     :clj (async/chan)))
+
+(def ^:private down-events
+  (z/input 0 ::down-events keydown-channel))
+
+(def ^:private up-events
+  (z/input 0 ::up-events keyup-channel))
+
+(def ^:private blur-events
