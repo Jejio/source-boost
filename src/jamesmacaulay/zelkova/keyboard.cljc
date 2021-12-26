@@ -21,4 +21,11 @@
      :clj (async/chan)))
 
 (defn- keyup-channel
-  [graph opt
+  [graph opts]
+  #?(:cljs (listen js/document "keyup")
+     :clj (async/chan)))
+
+(defn- blur-channel
+  [graph opts]
+  #?(:cljs (listen js/window "blur")
+     :clj (
