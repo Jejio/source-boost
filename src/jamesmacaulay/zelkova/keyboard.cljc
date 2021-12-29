@@ -37,3 +37,8 @@
   (z/input 0 ::up-events keyup-channel))
 
 (def ^:private blur-events
+  (z/input 0 ::blur-events blur-channel))
+
+(def ^:private empty-state {:alt-key false :meta-key false :key-codes #{}})
+
+(defmulti ^:private event-acti
