@@ -41,4 +41,10 @@
 
 (def ^:private empty-state {:alt-key false :meta-key false :key-codes #{}})
 
-(defmulti ^:private event-acti
+(defmulti ^:private event-action (fn [state event] (.-type event)))
+
+(defmethod event-action "keydown"
+  [state event]
+  (-> state
+      (update-in [:key-codes] conj (.-keyCode event))
+      (assoc :alt (.-altKey eve
