@@ -47,4 +47,11 @@
   [state event]
   (-> state
       (update-in [:key-codes] conj (.-keyCode event))
-      (assoc :alt (.-altKey eve
+      (assoc :alt (.-altKey event)
+             :meta (.-metaKey event))))
+
+(defmethod event-action "keyup"
+  [state event]
+  (-> state
+      (update-in [:key-codes] disj (.-keyCode event))
+      (assoc :alt (.-altKey 
