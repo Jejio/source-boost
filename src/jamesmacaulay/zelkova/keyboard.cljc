@@ -62,4 +62,11 @@
   empty-state)
 
 (def ^:private key-merge
-  (->> (z/merge down-ev
+  (->> (z/merge down-events up-events blur-events)
+       (z/reductions event-action empty-state)))
+
+(defn- key-signal
+  [f]
+  (z/drop-repeats (z/map f key-merge)))
+
+(def ^{:doc "A signal of sets of 
