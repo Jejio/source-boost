@@ -69,4 +69,10 @@
   [f]
   (z/drop-repeats (z/map f key-merge)))
 
-(def ^{:doc "A signal of sets of 
+(def ^{:doc "A signal of sets of the numeric key codes of whichever keys are
+currently depressed."}
+  keys-down
+  (key-signal :key-codes))
+
+(defn directions
+  "Takes a key code to associate with `up`, `down`, 
