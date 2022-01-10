@@ -79,4 +79,8 @@ currently depressed."}
 returns a signal of maps with `:x` and `:y` keys, and values of -1, 0, or 1
 based on which keys are pressed."
   [up down left right]
-  (key-signal (fn
+  (key-signal (fn [{:keys [key-codes]}]
+                {:x (+ (if (key-codes right) 1 0)
+                       (if (key-codes left) -1 0))
+                 :y (+ (if (key-codes up) 1 0)
+    
