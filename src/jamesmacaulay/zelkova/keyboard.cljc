@@ -83,4 +83,9 @@ based on which keys are pressed."
                 {:x (+ (if (key-codes right) 1 0)
                        (if (key-codes left) -1 0))
                  :y (+ (if (key-codes up) 1 0)
-    
+                       (if (key-codes down) -1 0))})))
+
+(def ^{:doc "A signal of `:x`/`:y` maps as per the `directions` function, with
+the arrow keys used for directions."}
+  arrows
+  
