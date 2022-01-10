@@ -75,4 +75,8 @@ currently depressed."}
   (key-signal :key-codes))
 
 (defn directions
-  "Takes a key code to associate with `up`, `down`, 
+  "Takes a key code to associate with `up`, `down`, `left`, and `right`, and
+returns a signal of maps with `:x` and `:y` keys, and values of -1, 0, or 1
+based on which keys are pressed."
+  [up down left right]
+  (key-signal (fn
