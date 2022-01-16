@@ -88,4 +88,9 @@ based on which keys are pressed."
 (def ^{:doc "A signal of `:x`/`:y` maps as per the `directions` function, with
 the arrow keys used for directions."}
   arrows
-  
+  (directions 38 40 37 39))
+
+(def ^{:doc "A signal of `:x`/`:y` maps as per the `directions` function, with
+the `w`, `a`, `s`, and `d` used for directions."}
+  wasd
+  (directions 87 83 65 68))
