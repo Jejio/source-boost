@@ -94,3 +94,9 @@ the arrow keys used for directions."}
 the `w`, `a`, `s`, and `d` used for directions."}
   wasd
   (directions 87 83 65 68))
+
+(defn down?
+  "Takes a key code and returns a boolean signal which is `true` when the
+corresponding key is depressed."
+  [code]
+  (key-signal (fn [{:keys [key-codes]
