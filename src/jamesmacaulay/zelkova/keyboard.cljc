@@ -99,4 +99,12 @@ the `w`, `a`, `s`, and `d` used for directions."}
   "Takes a key code and returns a boolean signal which is `true` when the
 corresponding key is depressed."
   [code]
-  (key-signal (fn [{:keys [key-codes]
+  (key-signal (fn [{:keys [key-codes]}]
+                (boolean (key-codes code)))))
+
+(def ^{:doc "A boolean signal which is `true` when the alt key is
+depressed."}
+  alt
+  (key-signal :alt))
+
+(def ^{:doc "A boolean signal which is 
