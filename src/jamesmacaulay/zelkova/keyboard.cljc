@@ -107,4 +107,9 @@ depressed."}
   alt
   (key-signal :alt))
 
-(def ^{:doc "A boolean signal which is 
+(def ^{:doc "A boolean signal which is `true` when the meta key is depressed
+(this is the Command key on a Mac, and the Windows key on Windows)."}
+  meta
+  (key-signal :meta))
+
+(def ^{:doc "A boolean signal which is `true` wh
