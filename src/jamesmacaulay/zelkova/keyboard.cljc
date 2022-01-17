@@ -112,4 +112,14 @@ depressed."}
   meta
   (key-signal :meta))
 
-(def ^{:doc "A boolean signal which is `true` wh
+(def ^{:doc "A boolean signal which is `true` when the control key is
+depressed."}
+  ctrl
+  (down? 17))
+
+(def ^{:doc "A boolean signal which is `true` when the shift key is
+depressed."}
+  shift
+  (down? 16))
+
+(def
