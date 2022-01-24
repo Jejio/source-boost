@@ -128,4 +128,11 @@ depressed."}
   (down? 32))
 
 (def ^{:doc "A boolean signal which is `true` when the enter key is
-depressed
+depressed."}
+  enter
+  (down? 13))
+
+#?(:cljs
+   (def ^{:doc "A signal of the code of the last pressed key."}
+     last-pressed
+     (z/map #(.-keyCode %) down-events)))
