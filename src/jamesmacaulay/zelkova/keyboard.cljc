@@ -122,4 +122,10 @@ depressed."}
   shift
   (down? 16))
 
-(def
+(def ^{:doc "A boolean signal which is `true` when the space key is
+depressed."}
+  space
+  (down? 32))
+
+(def ^{:doc "A boolean signal which is `true` when the enter key is
+depressed
