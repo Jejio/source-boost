@@ -7,4 +7,6 @@
                     [jamesmacaulay.zelkova.impl.signal :as impl])
      :cljs (:require [cljs.core :as core]
                      [cljs.core.async :as async :refer [<! >!]]
-    
+                     [cljs.core.async.impl.protocols :as async-impl]
+                     [jamesmacaulay.zelkova.impl.signal :as impl]))
+  #?(:cljs (:require-macros [cljs.core.asy
