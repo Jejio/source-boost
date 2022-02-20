@@ -13,4 +13,8 @@
 
 (defn input
   "Returns an input signal with initial value `init`. The signal propagates values
-from events which match some `topic`. An asynchronous `
+from events which match some `topic`. An asynchronous `value-source` may be provided,
+which will be used as the default value source for the given event `topic`. `value-source`
+may take the following forms:
+
+* a function taking a live gra
