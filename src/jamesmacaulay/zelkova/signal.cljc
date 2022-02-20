@@ -17,4 +17,9 @@ from events which match some `topic`. An asynchronous `value-source` may be prov
 which will be used as the default value source for the given event `topic`. `value-source`
 may take the following forms:
 
-* a function taking a live gra
+* a function taking a live graph and an options map, and returns a channel of values
+* a channel of values
+* a mult of some such value channel"
+  ([init] (input init (keyword (gensym))))
+  ([init topic]
+   (impl/ma
