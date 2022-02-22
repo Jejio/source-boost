@@ -22,4 +22,7 @@ may take the following forms:
 * a mult of some such value channel"
   ([init] (input init (keyword (gensym))))
   ([init topic]
-   (impl/ma
+   (impl/make-signal {:init-fn             (constantly init)
+                      :relayed-event-topic topic}))
+  ([init topic value-source]
+   (impl/make-signal {:init-fn             (c
