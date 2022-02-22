@@ -25,4 +25,6 @@ may take the following forms:
    (impl/make-signal {:init-fn             (constantly init)
                       :relayed-event-topic topic}))
   ([init topic value-source]
-   (impl/make-signal {:init-fn             (c
+   (impl/make-signal {:init-fn             (constantly init)
+                      :relayed-event-topic topic
+                      :event-sources       {topic (impl/value-source->events-fn value-source topic)}}
