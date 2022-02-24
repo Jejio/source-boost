@@ -27,4 +27,9 @@ may take the following forms:
   ([init topic value-source]
    (impl/make-signal {:init-fn             (constantly init)
                       :relayed-event-topic topic
-                      :event-sources       {topic (impl/value-source->events-fn value-source topic)}}
+                      :event-sources       {topic (impl/value-source->events-fn value-source topic)}})))
+
+(defn write-port
+  "Takes an `init` value and an optional `topic`, and returns an input signal
+  which satisfies core.async's `WritePort` protocol. This allows you to put
+ 
