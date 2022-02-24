@@ -34,4 +34,8 @@ may take the following forms:
   which satisfies core.async's `WritePort` protocol. This allows you to put
   values onto the signal as if it were a channel. If the `write-port` is being
   used in multiple live graphs, each value put onto the `write-port` is
-  sent to all graph
+  sent to all graphs."
+  ([init] (write-port init (keyword (gensym))))
+  ([init topic]
+    (let [write-port-channel (async/chan)]
+      (impl/make-signal {:init-fn             
