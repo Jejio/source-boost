@@ -32,4 +32,6 @@ may take the following forms:
 (defn write-port
   "Takes an `init` value and an optional `topic`, and returns an input signal
   which satisfies core.async's `WritePort` protocol. This allows you to put
- 
+  values onto the signal as if it were a channel. If the `write-port` is being
+  used in multiple live graphs, each value put onto the `write-port` is
+  sent to all graph
