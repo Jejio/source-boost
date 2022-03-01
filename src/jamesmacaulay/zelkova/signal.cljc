@@ -38,4 +38,6 @@ may take the following forms:
   ([init] (write-port init (keyword (gensym))))
   ([init topic]
     (let [write-port-channel (async/chan)]
-      (impl/make-signal {:init-fn             
+      (impl/make-signal {:init-fn             (constantly init)
+                         :relayed-event-topic topic
+                         :event-sources       {topic (impl/value-source->events-fn write
