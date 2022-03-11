@@ -40,4 +40,11 @@ may take the following forms:
     (let [write-port-channel (async/chan)]
       (impl/make-signal {:init-fn             (constantly init)
                          :relayed-event-topic topic
-                         :event-sources       {topic (impl/value-source->events-fn write
+                         :event-sources       {topic (impl/value-source->events-fn write-port-channel topic)}
+                         :write-port-channel  write-port-channel}))))
+
+(defn- take-nothing
+  [rf]
+  (fn
+    ([] (rf))
+    ([result] (rf res
