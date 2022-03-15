@@ -53,4 +53,9 @@ may take the following forms:
 (defn constant
   "Returns a constant signal of the given value."
   [x]
-  (impl/make-signal {:init-fn  
+  (impl/make-signal {:init-fn   (constantly x)
+                     :sources   [:events]
+                     :msg-xform take-nothing}))
+
+(defn pipeline
+  "Takes a stateless transducer `xform`, a fallb
