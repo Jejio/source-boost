@@ -47,4 +47,10 @@ may take the following forms:
   [rf]
   (fn
     ([] (rf))
-    ([result] (rf res
+    ([result] (rf result))
+    ([result _input] (ensure-reduced result))))
+
+(defn constant
+  "Returns a constant signal of the given value."
+  [x]
+  (impl/make-signal {:init-fn  
