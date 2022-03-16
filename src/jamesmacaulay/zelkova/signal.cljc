@@ -58,4 +58,7 @@ may take the following forms:
                      :msg-xform take-nothing}))
 
 (defn pipeline
-  "Takes a stateless transducer `xform`, a fallb
+  "Takes a stateless transducer `xform`, a fallback value `base`, and a signal
+`sig`. Returns a new signal which pipes values from `sig` through `xform`.
+Because transducers may filter out values, you must provide a `base` which will
+be used
