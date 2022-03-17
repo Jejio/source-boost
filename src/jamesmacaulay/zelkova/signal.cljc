@@ -61,4 +61,6 @@ may take the following forms:
   "Takes a stateless transducer `xform`, a fallback value `base`, and a signal
 `sig`. Returns a new signal which pipes values from `sig` through `xform`.
 Because transducers may filter out values, you must provide a `base` which will
-be used
+be used as the derived signal's initial value if the initial value of `sig` ends
+up being filtered. If multiple values are emitted from the transduction of the
+initial value of `sig`, then the ini
