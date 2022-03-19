@@ -67,4 +67,7 @@ initial value of `sig`, then the initial value of the new signal will be the
 _last_ of those emitted. Stateful transducers will give unexpected results and
 are not supported."
   [xform base sig]
-  (let [pare
+  (let [parent-init-fn (:init-fn sig)
+        init-fn (fn [live-graph opts]
+                  (let [vals (sequence xform [(parent-init-fn live-graph opts)])]
+                    (if (se
