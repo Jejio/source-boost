@@ -70,4 +70,8 @@ are not supported."
   (let [parent-init-fn (:init-fn sig)
         init-fn (fn [live-graph opts]
                   (let [vals (sequence xform [(parent-init-fn live-graph opts)])]
-                    (if (se
+                    (if (seq vals)
+                      (last vals)
+                      base)))
+        msg-xform (comp (core/map (fn [[_event _prev [msg]]] msg))
+                        (filter 
