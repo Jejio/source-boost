@@ -63,4 +63,8 @@ may take the following forms:
 Because transducers may filter out values, you must provide a `base` which will
 be used as the derived signal's initial value if the initial value of `sig` ends
 up being filtered. If multiple values are emitted from the transduction of the
-initial value of `sig`, then the ini
+initial value of `sig`, then the initial value of the new signal will be the
+_last_ of those emitted. Stateful transducers will give unexpected results and
+are not supported."
+  [xform base sig]
+  (let [pare
