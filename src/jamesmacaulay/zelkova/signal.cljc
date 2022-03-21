@@ -87,4 +87,7 @@ are not supported."
 signal of values obtained by applying `f` to the values from the source signals."
   [f sources]
   (if (empty? sources)
-    (constant (f
+    (constant (f))
+    (let [sources (vec sources)
+          msg-xform (comp (core/map (fn [[_event _prev msgs]] msgs))
+                          (filter (fn [msgs] (some impl/fresh? msgs
