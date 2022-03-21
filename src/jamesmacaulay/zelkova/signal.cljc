@@ -79,4 +79,8 @@ are not supported."
                         xform
                         (core/map impl/fresh))]
     (impl/make-signal {:init-fn init-fn
-      
+                       :sources [sig]
+                       :msg-xform msg-xform})))
+
+(defn mapseq
+  "Takes a mapping function `f` and a sequence of signal `sources`, and retur
