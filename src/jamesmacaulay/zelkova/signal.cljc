@@ -83,4 +83,8 @@ are not supported."
                        :msg-xform msg-xform})))
 
 (defn mapseq
-  "Takes a mapping function `f` and a sequence of signal `sources`, and retur
+  "Takes a mapping function `f` and a sequence of signal `sources`, and returns a
+signal of values obtained by applying `f` to the values from the source signals."
+  [f sources]
+  (if (empty? sources)
+    (constant (f
