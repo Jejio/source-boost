@@ -74,4 +74,9 @@ are not supported."
                       (last vals)
                       base)))
         msg-xform (comp (core/map (fn [[_event _prev [msg]]] msg))
-                        (filter 
+                        (filter impl/fresh?)
+                        (core/map impl/value)
+                        xform
+                        (core/map impl/fresh))]
+    (impl/make-signal {:init-fn init-fn
+      
