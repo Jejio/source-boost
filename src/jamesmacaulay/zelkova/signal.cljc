@@ -90,4 +90,8 @@ signal of values obtained by applying `f` to the values from the source signals.
     (constant (f))
     (let [sources (vec sources)
           msg-xform (comp (core/map (fn [[_event _prev msgs]] msgs))
-                          (filter (fn [msgs] (some impl/fresh? msgs
+                          (filter (fn [msgs] (some impl/fresh? msgs)))
+                          (core/map (fn [msgs]
+                                      (->> msgs
+                                           (core/map impl/value)
+   
