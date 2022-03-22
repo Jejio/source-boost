@@ -94,4 +94,7 @@ signal of values obtained by applying `f` to the values from the source signals.
                           (core/map (fn [msgs]
                                       (->> msgs
                                            (core/map impl/value)
-   
+                                           (apply f)
+                                           (impl/fresh)))))]
+      (impl/make-signal {:init-fn (fn [live-graph opts]
+    
