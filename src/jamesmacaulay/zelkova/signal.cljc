@@ -97,4 +97,6 @@ signal of values obtained by applying `f` to the values from the source signals.
                                            (apply f)
                                            (impl/fresh)))))]
       (impl/make-signal {:init-fn (fn [live-graph opts]
-    
+                                    (->> sources
+                                         (core/map (fn [sig] ((:init-fn sig) live-graph opts)))
+                         
