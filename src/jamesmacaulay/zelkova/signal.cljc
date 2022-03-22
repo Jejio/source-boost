@@ -99,4 +99,9 @@ signal of values obtained by applying `f` to the values from the source signals.
       (impl/make-signal {:init-fn (fn [live-graph opts]
                                     (->> sources
                                          (core/map (fn [sig] ((:init-fn sig) live-graph opts)))
-                         
+                                         (apply f)))
+                         :sources sources
+                         :msg-xform msg-xform}))))
+
+(defn map
+  "Takes a mapping function `f` and any number 
