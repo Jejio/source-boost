@@ -112,4 +112,9 @@ signal of values obtained by applying `f` to the values from the source signals.
 (defn template
   "Takes a map whose values are signals, to be used as a template. Returns a new
 signal whose values are maps of the same form as `signal-map`, but with the current
-value of each signal in pl
+value of each signal in place of the signal itself."
+  [signal-map]
+  (let [ks (keys signal-map)]
+    (mapseq (fn [& values]
+              (zipmap ks values))
+            (vals signal-map
