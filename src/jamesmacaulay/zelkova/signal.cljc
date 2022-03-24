@@ -117,4 +117,8 @@ value of each signal in place of the signal itself."
   (let [ks (keys signal-map)]
     (mapseq (fn [& values]
               (zipmap ks values))
-            (vals signal-map
+            (vals signal-map))))
+
+(defn indexed-updates
+  "Takes a map whose values are signals, to be used as a template. Returns a new
+signal whose values are maps that inc
