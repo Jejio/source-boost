@@ -104,4 +104,10 @@ signal of values obtained by applying `f` to the values from the source signals.
                          :msg-xform msg-xform}))))
 
 (defn map
-  "Takes a mapping function `f` and any number 
+  "Takes a mapping function `f` and any number of signal `sources`, and returns a
+signal of values obtained by applying `f` to the values from the source signals."
+  [f & sources]
+  (mapseq f sources))
+
+(defn template
+  "Takes a map wh
