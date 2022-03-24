@@ -110,4 +110,6 @@ signal of values obtained by applying `f` to the values from the source signals.
   (mapseq f sources))
 
 (defn template
-  "Takes a map wh
+  "Takes a map whose values are signals, to be used as a template. Returns a new
+signal whose values are maps of the same form as `signal-map`, but with the current
+value of each signal in pl
