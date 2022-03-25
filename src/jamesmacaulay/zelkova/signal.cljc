@@ -121,4 +121,11 @@ value of each signal in place of the signal itself."
 
 (defn indexed-updates
   "Takes a map whose values are signals, to be used as a template. Returns a new
-signal whose values are maps that inc
+signal whose values are maps that include an entry for every signal in
+`signal-map` with a fresh value. For example, assuming that `signal-map` is:
+
+    {:a sig-a
+     :b sig-b
+     :c sig-c}
+
+Then when `sig-a` has a fresh v
