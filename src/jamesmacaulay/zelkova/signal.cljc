@@ -128,4 +128,6 @@ signal whose values are maps that include an entry for every signal in
      :b sig-b
      :c sig-c}
 
-Then when `sig-a` has a fresh v
+Then when `sig-a` has a fresh value of \"foo\", `sig-b`'s value is cached, and
+`sig-c` has a fresh value of \"bar\", then the `indexed-updates` signal would
+emit `{:a \"foo\" :c \"bar\"}. When none
