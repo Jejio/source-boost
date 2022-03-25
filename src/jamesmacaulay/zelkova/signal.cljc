@@ -130,4 +130,8 @@ signal whose values are maps that include an entry for every signal in
 
 Then when `sig-a` has a fresh value of \"foo\", `sig-b`'s value is cached, and
 `sig-c` has a fresh value of \"bar\", then the `indexed-updates` signal would
-emit `{:a \"foo\" :c \"bar\"}. When none
+emit `{:a \"foo\" :c \"bar\"}. When none of the signals have fresh values, no
+value is emitted from the `indexed-updates` signal. This means that this signal
+never emits an empty map."
+  [signal-map]
+  (let [ks (k
