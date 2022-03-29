@@ -140,4 +140,7 @@ never emits an empty map."
                   (zipmap ks (core/map (fn [s] ((:init-fn s) live-graph opts)) vs)))
         kv-xform (comp (filter (fn [[k msg]] (impl/fresh? msg)))
                        (core/map (fn [[k msg]] [k (impl/value msg)])))
-        msg-xform (comp (core/map (fn [[_eve
+        msg-xform (comp (core/map (fn [[_event _prev msgs]]
+                                    (into {} kv-xform (core/map vector ks msgs))))
+                        (remove empty?)
+                        (core/map impl/fre
