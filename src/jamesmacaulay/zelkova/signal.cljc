@@ -134,4 +134,8 @@ emit `{:a \"foo\" :c \"bar\"}. When none of the signals have fresh values, no
 value is emitted from the `indexed-updates` signal. This means that this signal
 never emits an empty map."
   [signal-map]
-  (let [ks (k
+  (let [ks (keys signal-map)
+        vs (vals signal-map)
+        init-fn (fn [live-graph opts]
+                  (zipmap ks (core/map (fn [s] ((:init-fn s) live-graph opts)) vs)))
+        kv-xfor
