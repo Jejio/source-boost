@@ -143,4 +143,10 @@ never emits an empty map."
         msg-xform (comp (core/map (fn [[_event _prev msgs]]
                                     (into {} kv-xform (core/map vector ks msgs))))
                         (remove empty?)
-                        (core/map impl/fre
+                        (core/map impl/fresh))]
+    (impl/make-signal {:init-fn   init-fn
+                       :sources   vs
+                       :msg-xform msg-xform})))
+
+(defn foldp
+  "Create a past-dependent signal (\
