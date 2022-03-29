@@ -138,4 +138,6 @@ never emits an empty map."
         vs (vals signal-map)
         init-fn (fn [live-graph opts]
                   (zipmap ks (core/map (fn [s] ((:init-fn s) live-graph opts)) vs)))
-        kv-xfor
+        kv-xform (comp (filter (fn [[k msg]] (impl/fresh? msg)))
+                       (core/map (fn [[k msg]] [k (impl/value msg)])))
+        msg-xform (comp (core/map (fn [[_eve
