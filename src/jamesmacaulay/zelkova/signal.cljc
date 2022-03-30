@@ -149,4 +149,6 @@ never emits an empty map."
                        :msg-xform msg-xform})))
 
 (defn foldp
-  "Create a past-dependent signal (\
+  "Create a past-dependent signal (\"fold into the past\"). The values of a `foldp`
+signal are obtained by calling `f` with two arguments: the current value of the
+`source` signal, and the previous 
