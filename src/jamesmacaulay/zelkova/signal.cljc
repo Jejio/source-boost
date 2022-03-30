@@ -151,4 +151,8 @@ never emits an empty map."
 (defn foldp
   "Create a past-dependent signal (\"fold into the past\"). The values of a `foldp`
 signal are obtained by calling `f` with two arguments: the current value of the
-`source` signal, and the previous 
+`source` signal, and the previous value of the new `foldp` signal (acting as the
+\"accumulator\"). `init` provides the initial value of the new signal, and
+therefore acts as the seed accumulator."
+  [f base source]
+  (impl/make
