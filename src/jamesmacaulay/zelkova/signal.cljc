@@ -158,4 +158,6 @@ therefore acts as the seed accumulator."
   (impl/make-signal {:init-fn   (constantly base)
                      :sources   [source]
                      :msg-xform (comp (filter (fn [[_event _prev [msg]]]
-                             
+                                                (impl/fresh? msg)))
+                                      (core/map (fn [[_event prev [msg]]]
+                                                  (im
