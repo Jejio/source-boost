@@ -160,4 +160,9 @@ therefore acts as the seed accumulator."
                      :msg-xform (comp (filter (fn [[_event _prev [msg]]]
                                                 (impl/fresh? msg)))
                                       (core/map (fn [[_event prev [msg]]]
-                                                  (im
+                                                  (impl/fresh (f (impl/value msg) prev)))))}))
+
+(defn drop-repeats
+  "Returns a signal which relays values of `sig`, but drops repeated equal values."
+  [sig]
+  (impl/make-signal {:init-fn
