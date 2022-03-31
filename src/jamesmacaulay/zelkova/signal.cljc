@@ -155,4 +155,7 @@ signal are obtained by calling `f` with two arguments: the current value of the
 \"accumulator\"). `init` provides the initial value of the new signal, and
 therefore acts as the seed accumulator."
   [f base source]
-  (impl/make
+  (impl/make-signal {:init-fn   (constantly base)
+                     :sources   [source]
+                     :msg-xform (comp (filter (fn [[_event _prev [msg]]]
+                             
