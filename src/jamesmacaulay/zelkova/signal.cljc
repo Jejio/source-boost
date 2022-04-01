@@ -165,4 +165,7 @@ therefore acts as the seed accumulator."
 (defn drop-repeats
   "Returns a signal which relays values of `sig`, but drops repeated equal values."
   [sig]
-  (impl/make-signal {:init-fn
+  (impl/make-signal {:init-fn   (:init-fn sig)
+                     :sources   [sig]
+                     :msg-xform (comp (filter (fn [[_event prev [msg]]]
+                                          
