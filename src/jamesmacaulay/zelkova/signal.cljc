@@ -171,4 +171,8 @@ therefore acts as the seed accumulator."
                                                 (and (impl/fresh? msg)
                                                      (not= prev (impl/value msg)))))
                                       (core/map (fn [[_event _prev [msg]]]
-            
+                                                  msg)))}))
+
+(defn reductions
+  "Create a past-dependent signal like `foldp`, with two differences:
+* calls `f` 
