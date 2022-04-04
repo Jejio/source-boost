@@ -177,4 +177,8 @@ therefore acts as the seed accumulator."
   "Create a past-dependent signal like `foldp`, with two differences:
 * calls `f` with the arguments reversed to align with Clojure: the first
 argument is the accumulator, the second is the current value of `source`.
-* if `init` is omitted, the initi
+* if `init` is omitted, the initial value of the new signal will be obtained by
+calling `f` with no arguments."
+  ([f source] (reductions f (f) source))
+  ([f init source]
+   (foldp (fn [val pr
