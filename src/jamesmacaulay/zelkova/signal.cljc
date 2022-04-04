@@ -187,4 +187,6 @@ calling `f` with no arguments."
 
 (defn select-step
   "Takes an initial value and a map whose keys are signals and whose values are
-reducing functions. Returns a past-dependent si
+reducing functions. Returns a past-dependent signal like `reductions`, except
+each signal has its own reducing function to use when that signal updates. If
+more than one source signal updates from the same input event
