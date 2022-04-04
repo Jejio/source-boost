@@ -189,4 +189,8 @@ calling `f` with no arguments."
   "Takes an initial value and a map whose keys are signals and whose values are
 reducing functions. Returns a past-dependent signal like `reductions`, except
 each signal has its own reducing function to use when that signal updates. If
-more than one source signal updates from the same input event
+more than one source signal updates from the same input event, then each
+applicable reducing function is called to transform the state value in the
+same order as they are defined in `signal-handlers-map`."
+  [init & signals-and-handlers]
+  (let [[si
