@@ -181,4 +181,10 @@ argument is the accumulator, the second is the current value of `source`.
 calling `f` with no arguments."
   ([f source] (reductions f (f) source))
   ([f init source]
-   (foldp (fn [val pr
+   (foldp (fn [val prev] (f prev val))
+          init
+          source)))
+
+(defn select-step
+  "Takes an initial value and a map whose keys are signals and whose values are
+reducing functions. Returns a past-dependent si
