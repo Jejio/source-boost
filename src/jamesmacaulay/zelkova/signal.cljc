@@ -193,4 +193,7 @@ more than one source signal updates from the same input event, then each
 applicable reducing function is called to transform the state value in the
 same order as they are defined in `signal-handlers-map`."
   [init & signals-and-handlers]
-  (let [[si
+  (let [[signals handlers] (reduce (partial mapv conj)
+                                   [[] []]
+                                   (partition 2 signals-and-handlers))
+        signal->handler (zipmap si
