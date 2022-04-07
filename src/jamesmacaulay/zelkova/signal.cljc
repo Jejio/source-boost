@@ -196,4 +196,8 @@ same order as they are defined in `signal-handlers-map`."
   (let [[signals handlers] (reduce (partial mapv conj)
                                    [[] []]
                                    (partition 2 signals-and-handlers))
-        signal->handler (zipmap si
+        signal->handler (zipmap signals handlers)
+        updates-signal (indexed-updates (zipmap signals signals))
+        f (fn [prev updates-by-signal]
+            (reduce (fn [acc [sig val]]
+                      ((signa
