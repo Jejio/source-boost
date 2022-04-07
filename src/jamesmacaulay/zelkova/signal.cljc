@@ -200,4 +200,10 @@ same order as they are defined in `signal-handlers-map`."
         updates-signal (indexed-updates (zipmap signals signals))
         f (fn [prev updates-by-signal]
             (reduce (fn [acc [sig val]]
-                      ((signa
+                      ((signal->handler sig) acc val))
+                    prev
+                    updates-by-signal))]
+    (reductions f init updates-signal)))
+
+(defn async
+  "Returns an \"asynchronous\" version of `s
