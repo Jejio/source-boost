@@ -210,4 +210,10 @@ same order as they are defined in `signal-handlers-map`."
 does not maintain consistent event ordering relative to the main graph. In exchange,
 signals which depend on an `async` signal don't have to wait for the `source` to finish
 computing new values. This function is mainly useful in multithreaded environments when
-you don't want a slow computation to block the whole graph
+you don't want a slow computation to block the whole graph."
+  [source]
+  (let [topic [::async source]
+        msgs->events (comp cat
+                           (filter impl/fresh?)
+                           (core/map (fn [msg]
+            
