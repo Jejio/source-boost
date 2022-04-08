@@ -206,4 +206,6 @@ same order as they are defined in `signal-handlers-map`."
     (reductions f init updates-signal)))
 
 (defn async
-  "Returns an \"asynchronous\" version of `s
+  "Returns an \"asynchronous\" version of `source`, splitting off a new subgraph which
+does not maintain consistent event ordering relative to the main graph. In exchange,
+signals which depend on an `async` signal don't have to wait for the
