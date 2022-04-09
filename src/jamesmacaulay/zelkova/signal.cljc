@@ -218,4 +218,7 @@ you don't want a slow computation to block the whole graph."
                            (core/map (fn [msg]
                                        (impl/make-event topic (impl/value msg)))))
         events-channel-fn (fn [live-graph _]
-                            (async/tap (impl/signal-mu
+                            (async/tap (impl/signal-mult live-graph source)
+                                       (async/chan 1 msgs->events)))]
+    (impl/make-signal {:init-fn (:init-fn source)
+              
