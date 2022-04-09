@@ -221,4 +221,9 @@ you don't want a slow computation to block the whole graph."
                             (async/tap (impl/signal-mult live-graph source)
                                        (async/chan 1 msgs->events)))]
     (impl/make-signal {:init-fn (:init-fn source)
-              
+                       :deps [source]
+                       :relayed-event-topic topic
+                       :event-sources {topic events-channel-fn}})))
+
+(defn splice
+  "Splice into the signal
