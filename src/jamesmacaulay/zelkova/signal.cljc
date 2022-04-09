@@ -216,4 +216,6 @@ you don't want a slow computation to block the whole graph."
         msgs->events (comp cat
                            (filter impl/fresh?)
                            (core/map (fn [msg]
-            
+                                       (impl/make-event topic (impl/value msg)))))
+        events-channel-fn (fn [live-graph _]
+                            (async/tap (impl/signal-mu
