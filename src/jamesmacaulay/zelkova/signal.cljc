@@ -228,4 +228,6 @@ you don't want a slow computation to block the whole graph."
 (defn splice
   "Splice into the signal graph on the level of core.async channels. Takes a
 `setup!` function which is called when the `source` signal gets wired up into
-a live graph. The `setup!` function is pass
+a live graph. The `setup!` function is passed two arguments: a `from` channel
+and a `to` channel, in that order. The function is expected to be a consumer
+of the `from` channel and a producer on the `to` chann
