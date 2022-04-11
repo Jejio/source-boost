@@ -226,4 +226,6 @@ you don't want a slow computation to block the whole graph."
                        :event-sources {topic events-channel-fn}})))
 
 (defn splice
-  "Splice into the signal
+  "Splice into the signal graph on the level of core.async channels. Takes a
+`setup!` function which is called when the `source` signal gets wired up into
+a live graph. The `setup!` function is pass
