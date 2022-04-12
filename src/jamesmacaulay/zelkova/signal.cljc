@@ -230,4 +230,7 @@ you don't want a slow computation to block the whole graph."
 `setup!` function which is called when the `source` signal gets wired up into
 a live graph. The `setup!` function is passed two arguments: a `from` channel
 and a `to` channel, in that order. The function is expected to be a consumer
-of the `from` channel and a producer on the `to` chann
+of the `from` channel and a producer on the `to` channel, and should close the
+`to` channel when the `from` channel is closed. There are no requirements for
+how many values should be put on the `to` channel or when they should be sent.
+`spl
