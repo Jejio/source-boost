@@ -233,4 +233,6 @@ and a `to` channel, in that order. The function is expected to be a consumer
 of the `from` channel and a producer on the `to` channel, and should close the
 `to` channel when the `from` channel is closed. There are no requirements for
 how many values should be put on the `to` channel or when they should be sent.
-`spl
+`splice` returns a signal with an initial returned from `init-fn`. `init-fn`
+takes two functions, a `live-graph` and an `opts` map. If no `init-fn` is
+provided, then the initial value of `source` is used.
