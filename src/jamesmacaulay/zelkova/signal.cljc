@@ -235,4 +235,8 @@ of the `from` channel and a producer on the `to` channel, and should close the
 how many values should be put on the `to` channel or when they should be sent.
 `splice` returns a signal with an initial returned from `init-fn`. `init-fn`
 takes two functions, a `live-graph` and an `opts` map. If no `init-fn` is
-provided, then the initial value of `source` is used.
+provided, then the initial value of `source` is used. The returned signal
+asynchronously produces whichever values are put on the `to` channel in the
+`setup!` function."
+  ([setup! source]
+    (splice setup! (:init-fn sourc
