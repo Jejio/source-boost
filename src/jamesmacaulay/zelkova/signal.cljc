@@ -243,4 +243,6 @@ asynchronously produces whichever values are put on the `to` channel in the
   ([setup! init-fn source]
     (let [topic [::splice init-fn setup! source]
           events-channel-fn (fn [live-graph _]
-                              (let [from (async/tap (i
+                              (let [from (async/tap (impl/signal-mult live-graph source)
+                                                    (async/chan 1 impl/fresh-values))
+                                    to 
