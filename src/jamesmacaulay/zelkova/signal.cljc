@@ -245,4 +245,7 @@ asynchronously produces whichever values are put on the `to` channel in the
           events-channel-fn (fn [live-graph _]
                               (let [from (async/tap (impl/signal-mult live-graph source)
                                                     (async/chan 1 impl/fresh-values))
-                                    to 
+                                    to (async/chan 1 (core/map (partial impl/make-event topic)))]
+                                (setup! from to)
+                                to))]
+      (impl/make-signal {:init-fn init
