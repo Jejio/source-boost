@@ -239,4 +239,8 @@ provided, then the initial value of `source` is used. The returned signal
 asynchronously produces whichever values are put on the `to` channel in the
 `setup!` function."
   ([setup! source]
-    (splice setup! (:init-fn sourc
+    (splice setup! (:init-fn source) source))
+  ([setup! init-fn source]
+    (let [topic [::splice init-fn setup! source]
+          events-channel-fn (fn [live-graph _]
+                              (let [from (async/tap (i
