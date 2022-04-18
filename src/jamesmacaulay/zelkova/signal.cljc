@@ -248,4 +248,7 @@ asynchronously produces whichever values are put on the `to` channel in the
                                     to (async/chan 1 (core/map (partial impl/make-event topic)))]
                                 (setup! from to)
                                 to))]
-      (impl/make-signal {:init-fn init
+      (impl/make-signal {:init-fn init-fn
+                         :deps [source]
+                         :relayed-event-topic topic
+                         :event-sources {topic events-channel-f
