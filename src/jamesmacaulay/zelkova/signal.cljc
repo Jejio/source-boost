@@ -255,4 +255,6 @@ asynchronously produces whichever values are put on the `to` channel in the
 
 (defn mergeseq
   "Takes a sequence of signals `sigs`, and returns a new signal which relays fresh
-values from all of the source signals. When more than one source 
+values from all of the source signals. When more than one source has fresh values
+at the same time, the first (leftmost) signal in `sigs` will take precedence and
+the other values will be discarded. The initia
