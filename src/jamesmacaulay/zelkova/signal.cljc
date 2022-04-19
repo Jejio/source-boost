@@ -257,4 +257,8 @@ asynchronously produces whichever values are put on the `to` channel in the
   "Takes a sequence of signals `sigs`, and returns a new signal which relays fresh
 values from all of the source signals. When more than one source has fresh values
 at the same time, the first (leftmost) signal in `sigs` will take precedence and
-the other values will be discarded. The initia
+the other values will be discarded. The initial value of the returned signal is
+equal to the initial value of the first source signal."
+  [sigs]
+  (impl/make-signal {:init-fn   (:init-fn (first sigs))
+       
