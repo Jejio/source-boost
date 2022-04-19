@@ -251,4 +251,8 @@ asynchronously produces whichever values are put on the `to` channel in the
       (impl/make-signal {:init-fn init-fn
                          :deps [source]
                          :relayed-event-topic topic
-                         :event-sources {topic events-channel-f
+                         :event-sources {topic events-channel-fn}}))))
+
+(defn mergeseq
+  "Takes a sequence of signals `sigs`, and returns a new signal which relays fresh
+values from all of the source signals. When more than one source 
