@@ -261,4 +261,6 @@ the other values will be discarded. The initial value of the returned signal is
 equal to the initial value of the first source signal."
   [sigs]
   (impl/make-signal {:init-fn   (:init-fn (first sigs))
-       
+                     :sources   sigs
+                     :msg-xform (comp (core/map (fn [[_event _prev msgs]]
+                                                  (first (filter
