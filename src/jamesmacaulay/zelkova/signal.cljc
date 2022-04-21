@@ -263,4 +263,8 @@ equal to the initial value of the first source signal."
   (impl/make-signal {:init-fn   (:init-fn (first sigs))
                      :sources   sigs
                      :msg-xform (comp (core/map (fn [[_event _prev msgs]]
-                                                  (first (filter
+                                                  (first (filter impl/fresh? msgs))))
+                                      (remove nil?))}))
+
+(defn merge
+  "Takes any number of source signals `sigs`, and returns a new sign
