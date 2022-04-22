@@ -269,4 +269,11 @@ equal to the initial value of the first source signal."
 (defn merge
   "Takes any number of source signals `sigs`, and returns a new signal which relays
 fresh values from all of the source signals. When more than one source has fresh values
-at the same time, the first (leftmost) signal will take prec
+at the same time, the first (leftmost) signal will take precedence and the other values
+will be discarded. The initial value of the returned signal is equal to the initial
+value of the first source signal."
+  [& sigs]
+  (mergeseq sigs))
+
+(defn combine
+  "C
