@@ -276,4 +276,10 @@ value of the first source signal."
   (mergeseq sigs))
 
 (defn combine
-  "C
+  "Combines a sequence of signals into a signal of vectors. Equivalent to
+`(signal/map vector sig1, sig2, ...)`"
+  [sigs]
+  (mapseq vector sigs))
+
+(defn sample-on
+  "Sample the current va
