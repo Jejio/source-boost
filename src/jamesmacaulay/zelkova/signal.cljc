@@ -288,4 +288,6 @@ of click positions."
   [sampler-sig value-sig]
   (impl/make-signal {:init-fn   (:init-fn value-sig)
                      :sources   [sampler-sig value-sig]
-                     :
+                     :msg-xform (comp (core/map (fn [[_event _prev [sampler-msg value-msg]]]
+                                                  (when (impl/fresh? sampler-msg)
+                                   
