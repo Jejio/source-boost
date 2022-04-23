@@ -284,4 +284,8 @@ value of the first source signal."
 (defn sample-on
   "Sample the current value of `value-sig` every time `sampler-sig` updates with a
 fresh value. For example, `(sample-on mouse/clicks mouse/position)` returns a signal
-of click po
+of click positions."
+  [sampler-sig value-sig]
+  (impl/make-signal {:init-fn   (:init-fn value-sig)
+                     :sources   [sampler-sig value-sig]
+                     :
