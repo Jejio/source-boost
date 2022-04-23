@@ -290,4 +290,8 @@ of click positions."
                      :sources   [sampler-sig value-sig]
                      :msg-xform (comp (core/map (fn [[_event _prev [sampler-msg value-msg]]]
                                                   (when (impl/fresh? sampler-msg)
-                                   
+                                                    (impl/fresh (impl/value value-msg)))))
+                                      (remove nil?))}))
+
+(defn count
+  "Returns a signal whose values ar
