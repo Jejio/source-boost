@@ -282,4 +282,6 @@ value of the first source signal."
   (mapseq vector sigs))
 
 (defn sample-on
-  "Sample the current va
+  "Sample the current value of `value-sig` every time `sampler-sig` updates with a
+fresh value. For example, `(sample-on mouse/clicks mouse/position)` returns a signal
+of click po
