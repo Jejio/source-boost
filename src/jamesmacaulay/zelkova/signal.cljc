@@ -294,4 +294,11 @@ of click positions."
                                       (remove nil?))}))
 
 (defn count
-  "Returns a signal whose values ar
+  "Returns a signal whose values are the number of fresh values emitted so far from
+`sig`. Repeated equal values will be counted so long as they are fresh, so if you
+don't want to count repeats then you need to `(count (drop-repeats sig))` instead."
+  [sig]
+  (foldp #(inc %2) 0 sig))
+
+(defn count-if
+  "Like `count`, but only increments the counter if the fresh value e
