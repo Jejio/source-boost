@@ -301,4 +301,7 @@ don't want to count repeats then you need to `(count (drop-repeats sig))` instea
   (foldp #(inc %2) 0 sig))
 
 (defn count-if
-  "Like `count`, but only increments the counter if the fresh value e
+  "Like `count`, but only increments the counter if the fresh value emitted from `sig`
+satisfies the predicate funtion `pred`. For example, `(count-if odd? numbers)` returns
+a signal of how many times the `numbers` signal emitted an odd number."
+  [pred sig
