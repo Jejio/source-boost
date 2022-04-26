@@ -319,4 +319,6 @@ a signal of how many times the `numbers` signal emitted an odd number."
         (remove nil?)))
 
 (defn keep-if
-  "Retu
+  "Returns a signal which relays values from `sig`, but discards any which don't match
+the given predicate function `pred`. If a `base` value is provided, it will be the
+initial value of the returne
