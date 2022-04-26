@@ -313,4 +313,10 @@ a signal of how many times the `numbers` signal emitted an odd number."
 (defn- keep-if-msg-xform
   [pred]
   (comp (core/map (fn [[_event _prev [msg]]]
-                    (when (and
+                    (when (and (impl/fresh? msg)
+                               (pred (impl/value msg)))
+                      (impl/fresh (impl/value msg)))))
+        (remove nil?)))
+
+(defn keep-if
+  "Retu
