@@ -304,4 +304,13 @@ don't want to count repeats then you need to `(count (drop-repeats sig))` instea
   "Like `count`, but only increments the counter if the fresh value emitted from `sig`
 satisfies the predicate funtion `pred`. For example, `(count-if odd? numbers)` returns
 a signal of how many times the `numbers` signal emitted an odd number."
-  [pred sig
+  [pred sig]
+  (foldp (fn [v c]
+           (if (pred v) (inc c) c))
+         0
+         sig))
+
+(defn- keep-if-msg-xform
+  [pred]
+  (comp (core/map (fn [[_event _prev [msg]]]
+                    (when (and
