@@ -323,4 +323,8 @@ a signal of how many times the `numbers` signal emitted an odd number."
 the given predicate function `pred`. If a `base` value is provided, it will be the
 initial value of the returned signal if the initial value of `sig` does not match the
 predicate. If no `base` is provided then the returned signal will always have the
-same initial value as `sig`, 
+same initial value as `sig`, even if it does not match the predicate."
+  ([pred sig]
+    (impl/make-signal {:init-fn   (:init-fn sig)
+                       :sources   [sig]
+                       :msg-
