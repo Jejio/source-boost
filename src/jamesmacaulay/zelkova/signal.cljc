@@ -331,4 +331,6 @@ same initial value as `sig`, even if it does not match the predicate."
   ([pred base sig]
     (impl/make-signal {:init-fn   (let [init-fn (:init-fn sig)]
                                     (fn [live-graph opts]
- 
+                                      (let [init (init-fn live-graph opts)]
+                                        (if (pred init) init base))))
+                       
