@@ -321,4 +321,6 @@ a signal of how many times the `numbers` signal emitted an odd number."
 (defn keep-if
   "Returns a signal which relays values from `sig`, but discards any which don't match
 the given predicate function `pred`. If a `base` value is provided, it will be the
-initial value of the returne
+initial value of the returned signal if the initial value of `sig` does not match the
+predicate. If no `base` is provided then the returned signal will always have the
+same initial value as `sig`, 
