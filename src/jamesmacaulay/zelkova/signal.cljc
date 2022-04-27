@@ -327,4 +327,8 @@ same initial value as `sig`, even if it does not match the predicate."
   ([pred sig]
     (impl/make-signal {:init-fn   (:init-fn sig)
                        :sources   [sig]
-                       :msg-
+                       :msg-xform (keep-if-msg-xform pred)}))
+  ([pred base sig]
+    (impl/make-signal {:init-fn   (let [init-fn (:init-fn sig)]
+                                    (fn [live-graph opts]
+ 
