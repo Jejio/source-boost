@@ -344,4 +344,9 @@ same initial value as `sig`, even if it does not match the predicate."
     (keep-if (complement pred) base sig)))
 
 (defn keep-when
-  "Returns a new signal which relays values from `value-sig`, but only when the cu
+  "Returns a new signal which relays values from `value-sig`, but only when the current
+value of `switch-sig` is truthy."
+  ([switch-sig value-sig]
+    (->> value-sig
+         (map vector (sample-on value-sig switch-sig))
+         (keep-if 
