@@ -339,4 +339,9 @@ same initial value as `sig`, even if it does not match the predicate."
 (defn drop-if
   "Like `keep-if`, but drops values which match the predicate."
   ([pred sig]
-    (keep-if (compleme
+    (keep-if (complement pred) sig))
+  ([pred base sig]
+    (keep-if (complement pred) base sig)))
+
+(defn keep-when
+  "Returns a new signal which relays values from `value-sig`, but only when the cu
