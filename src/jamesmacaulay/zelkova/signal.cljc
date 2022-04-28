@@ -349,4 +349,9 @@ value of `switch-sig` is truthy."
   ([switch-sig value-sig]
     (->> value-sig
          (map vector (sample-on value-sig switch-sig))
-         (keep-if 
+         (keep-if first)
+         (map second)))
+  ([switch-sig base value-sig]
+    (->> value-sig
+         (map vector (sample-on value-sig switch-sig))
+         (keep-if first [false 
