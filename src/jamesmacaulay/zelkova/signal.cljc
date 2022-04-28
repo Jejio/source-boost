@@ -333,4 +333,10 @@ same initial value as `sig`, even if it does not match the predicate."
                                     (fn [live-graph opts]
                                       (let [init (init-fn live-graph opts)]
                                         (if (pred init) init base))))
-                       
+                       :sources   [sig]
+                       :msg-xform (keep-if-msg-xform pred)})))
+
+(defn drop-if
+  "Like `keep-if`, but drops values which match the predicate."
+  ([pred sig]
+    (keep-if (compleme
