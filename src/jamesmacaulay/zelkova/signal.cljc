@@ -360,4 +360,9 @@ value of `switch-sig` is truthy."
 (defn drop-when
   "Like `keep-when`, but only relays values when `switch-sig` is falsy."
   ([switch-sig value-sig]
-    (keep-when (map not sw
+    (keep-when (map not switch-sig) value-sig))
+  ([switch-sig base value-sig]
+    (keep-when (map not switch-sig) base value-sig)))
+
+(defn activate-when
+  "Returns a transfor
