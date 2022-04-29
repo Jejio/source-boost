@@ -354,4 +354,10 @@ value of `switch-sig` is truthy."
   ([switch-sig base value-sig]
     (->> value-sig
          (map vector (sample-on value-sig switch-sig))
-         (keep-if first [false 
+         (keep-if first [false base])
+         (map second))))
+
+(defn drop-when
+  "Like `keep-when`, but only relays values when `switch-sig` is falsy."
+  ([switch-sig value-sig]
+    (keep-when (map not sw
