@@ -369,4 +369,9 @@ value of `switch-sig` is truthy."
 dependencies—aside from input nodes—is skipped unless `switch-sig`'s state
 is truthy. This is accomplished by walking `value-sig`'s graph and wrapping
 its input signals with `keep-when`. The intial value of a signal returned
-from `activate-when` is always equal to the initia
+from `activate-when` is always equal to the initial value of `value-sig`."
+  [switch-sig value-sig]
+  (let [sorted-signals (impl/topsort value-sig)
+        reducer (fn [m sig]
+                  (let [sig' (-> sig
+                 
