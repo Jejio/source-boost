@@ -367,4 +367,6 @@ value of `switch-sig` is truthy."
 (defn activate-when
   "Returns a transformation of `value-sig` whose entire graph of signal
 dependencies—aside from input nodes—is skipped unless `switch-sig`'s state
-is truthy. This is accomplished by walki
+is truthy. This is accomplished by walking `value-sig`'s graph and wrapping
+its input signals with `keep-when`. The intial value of a signal returned
+from `activate-when` is always equal to the initia
