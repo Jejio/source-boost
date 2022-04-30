@@ -365,4 +365,6 @@ value of `switch-sig` is truthy."
     (keep-when (map not switch-sig) base value-sig)))
 
 (defn activate-when
-  "Returns a transfor
+  "Returns a transformation of `value-sig` whose entire graph of signal
+dependencies—aside from input nodes—is skipped unless `switch-sig`'s state
+is truthy. This is accomplished by walki
