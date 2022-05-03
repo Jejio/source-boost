@@ -380,4 +380,10 @@ from `activate-when` is always equal to the initial value of `value-sig`."
                                 (keep-when switch-sig sig')
                                 sig')]
                     (assoc m sig sig'')))
-        signal-mapping (reduce 
+        signal-mapping (reduce reducer
+                               {:events :events}
+                               sorted-signals)]
+    (get signal-mapping value-sig)))
+
+(defn log
+  "A little convenience hel
