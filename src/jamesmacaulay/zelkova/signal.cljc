@@ -376,4 +376,8 @@ from `activate-when` is always equal to the initial value of `value-sig`."
                   (let [sig' (-> sig
                                  (update :sources (partial mapv m))
                                  (update :deps #(if (nil? %) % (mapv m %))))
-                        sig'' (if (impl/in
+                        sig'' (if (impl/input? sig')
+                                (keep-when switch-sig sig')
+                                sig')]
+                    (assoc m sig sig'')))
+        signal-mapping (reduce 
