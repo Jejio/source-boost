@@ -386,4 +386,9 @@ from `activate-when` is always equal to the initial value of `value-sig`."
     (get signal-mapping value-sig)))
 
 (defn log
-  "A little convenience hel
+  "A little convenience helper which logs signal values with `pr` before propagating them unchanged."
+  [sig]
+  (map (fn [x] (pr x) x) sig))
+
+(defn spawn
+  "Take an inert signal and produce a live, running graph."
