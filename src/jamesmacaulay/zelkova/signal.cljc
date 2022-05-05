@@ -392,3 +392,8 @@ from `activate-when` is always equal to the initial value of `value-sig`."
 
 (defn spawn
   "Take an inert signal and produce a live, running graph."
+  ([s] (impl/spawn* s nil))
+  ([s opts] (impl/spawn* s opts)))
+
+(defn pipe-to-atom
+  "Pipes fresh values from a live graph into an atom. If `x` is a signal, it is `spawn`e
