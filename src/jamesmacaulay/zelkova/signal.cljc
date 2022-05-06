@@ -402,4 +402,9 @@ initial value from that of the given signal or graph. If an existing atom is pro
 with a sequence of keys `ks`, then fresh values will be inserted into the atom's value using
 `swap!` with `assoc-in`. If `ks` is not present, then the whole atom value is replaced with
 `reset!`."
-  ([x
+  ([x]
+   (let [live-graph (spawn x)]
+     (pipe-to-atom live-graph
+                   (atom (impl/init live-graph)
+                         :meta {::source live-graph}))))
+  ([x atm] (impl
