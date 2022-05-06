@@ -396,4 +396,7 @@ from `activate-when` is always equal to the initial value of `value-sig`."
   ([s opts] (impl/spawn* s opts)))
 
 (defn pipe-to-atom
-  "Pipes fresh values from a live graph into an atom. If `x` is a signal, it is `spawn`e
+  "Pipes fresh values from a live graph into an atom. If `x` is a signal, it is `spawn`ed
+as a live graph first. If no atom is provided, then a new atom is created which takes its
+initial value from that of the given signal or graph. If an existing atom is provided along
+with a sequence of
