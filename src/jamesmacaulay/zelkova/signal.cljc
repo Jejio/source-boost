@@ -407,4 +407,8 @@ with a sequence of keys `ks`, then fresh values will be inserted into the atom's
      (pipe-to-atom live-graph
                    (atom (impl/init live-graph)
                          :meta {::source live-graph}))))
-  ([x atm] (impl
+  ([x atm] (impl/pipe-to-atom* x atm nil))
+  ([x atm ks] (impl/pipe-to-atom* x atm ks)))
+
+(defn to-chan
+  "Takes a signal `s` and returns a channel of fresh
