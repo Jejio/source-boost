@@ -9,4 +9,10 @@
                      [jamesmacaulay.async-tools.core :as tools]
                      [goog.events :as events]
                      [cljs.core.async :as async :refer [>! <!]]))
-  #?(:cljs (:requ
+  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go go-loop]])))
+
+#?(:cljs
+   (defn- listen
+     [el type & args]
+     (let [out (apply async/chan 1 args)]
+       (events/listen el ty
