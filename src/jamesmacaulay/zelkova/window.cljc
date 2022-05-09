@@ -6,4 +6,7 @@
                     [clojure.core.async :as async])
      :cljs (:require [jamesmacaulay.zelkova.signal :as z]
                      [jamesmacaulay.zelkova.impl.signal :as impl]
-                     [ja
+                     [jamesmacaulay.async-tools.core :as tools]
+                     [goog.events :as events]
+                     [cljs.core.async :as async :refer [>! <!]]))
+  #?(:cljs (:requ
