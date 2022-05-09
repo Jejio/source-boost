@@ -3,4 +3,7 @@
   (:refer-clojure :exclude [meta])
   #?(:clj (:require [jamesmacaulay.zelkova.signal :as z]
                     [jamesmacaulay.zelkova.impl.signal :as impl]
-                    [clojure.core.async :as 
+                    [clojure.core.async :as async])
+     :cljs (:require [jamesmacaulay.zelkova.signal :as z]
+                     [jamesmacaulay.zelkova.impl.signal :as impl]
+                     [ja
