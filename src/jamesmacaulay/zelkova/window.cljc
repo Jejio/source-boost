@@ -15,4 +15,11 @@
    (defn- listen
      [el type & args]
      (let [out (apply async/chan 1 args)]
-       (events/listen el ty
+       (events/listen el type (fn [e] (async/put! out e)))
+       out)))
+
+(defn- get-size
+  [opts]
+  #?(:cljs (let [node (or (:dom-node opts) (.-body js/document))
+                 w (.-clientWidth node)
+ 
