@@ -22,4 +22,10 @@
   [opts]
   #?(:cljs (let [node (or (:dom-node opts) (.-body js/document))
                  w (.-clientWidth node)
- 
+                 h (.-clientHeight node)]
+             [w h])
+     :clj [500 500]))
+
+(defn- dimensions-channel
+  [graph opts]
+  #?(:cljs (listen js/window "resize" (map #(get-siz
