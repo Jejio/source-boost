@@ -28,4 +28,10 @@
 
 (defn- dimensions-channel
   [graph opts]
-  #?(:cljs (listen js/window "resize" (map #(get-siz
+  #?(:cljs (listen js/window "resize" (map #(get-size opts)))
+      :clj (async/chan)))
+
+(def ^:private dimensions-events-fn
+  (impl/value-source->events-fn dimensions-channel ::dimensions))
+
+(def ^{:doc "A signal of `[x y]` v
