@@ -43,4 +43,8 @@ the window."}
 
 (def ^{:doc "A signal of the current width of the window."}
   width
-  (z/map fi
+  (z/map first dimensions))
+
+(def ^{:doc "A signal of the current height of the window."}
+  height
+  (z/map second dimensions))
