@@ -2,3 +2,6 @@
   #?(:cljs (:require [jamesmacaulay.async-tools.core :as tools]
                      [cljs.core.async :as async :refer [chan to-chan <! >!]]
                      [cljs.core.async.impl.protocols :as impl]
+                     [cemerick.cljs.test :refer-macros (deftest is testing)])
+     :clj (:require [jamesmacaulay.async-tools.core :as tools]
+     
