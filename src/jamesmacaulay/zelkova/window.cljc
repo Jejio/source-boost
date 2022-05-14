@@ -38,4 +38,9 @@
 the window."}
   dimensions
   (impl/make-signal {:init-fn (fn [_ opts] (get-size opts))
-                     :relayed-event-topic ::dimensi
+                     :relayed-event-topic ::dimensions
+                     :event-sources {::dimensions dimensions-events-fn}}))
+
+(def ^{:doc "A signal of the current width of the window."}
+  width
+  (z/map fi
