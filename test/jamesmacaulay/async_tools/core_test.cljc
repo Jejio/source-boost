@@ -8,4 +8,10 @@
                     [clojure.core.async.impl.protocols :as impl]
                     [jamesmacaulay.async-tools.test :refer (deftest-async)]
                     [clojure.test :refer (deftest is testing)]))
-  #?(:cljs (:require-macros [cljs.core.async.mac
+  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go]]
+                            [jamesmacaulay.async-tools.test :refer (deftest-async)])))
+
+(deftest-async test-concat
+  (go
+    (is (= [1 2 3 4 5 6]
+  
