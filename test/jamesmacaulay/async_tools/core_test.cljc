@@ -6,4 +6,6 @@
      :clj (:require [jamesmacaulay.async-tools.core :as tools]
                     [clojure.core.async :as async :refer [go chan to-chan <! >!]]
                     [clojure.core.async.impl.protocols :as impl]
-                    [jamesmacaulay.async
+                    [jamesmacaulay.async-tools.test :refer (deftest-async)]
+                    [clojure.test :refer (deftest is testing)]))
+  #?(:cljs (:require-macros [cljs.core.async.mac
