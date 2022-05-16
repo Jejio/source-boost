@@ -20,4 +20,11 @@
                 (async/into [])
                 <!)))))
 
-(deftest-async
+(deftest-async test-do-effects
+  (go
+    (let [box (atom 0)
+          in (chan)
+          out (chan)
+          ret (tools/do-effects (partial async/put! out) in)]
+      (is (= in ret))
+   
