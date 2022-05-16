@@ -14,4 +14,10 @@
 (deftest-async test-concat
   (go
     (is (= [1 2 3 4 5 6]
-  
+           (->> [[1 2] [3] [4 5] [6]]
+                (map async/to-chan)
+                (apply tools/concat)
+                (async/into [])
+                <!)))))
+
+(deftest-async
