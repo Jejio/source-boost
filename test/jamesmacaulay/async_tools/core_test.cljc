@@ -34,4 +34,11 @@
 
 (deftest readport?-test
   (is (every? tools/readport? [(chan)
-                               (
+                               (async/map< inc (chan))]))
+  (is (not-any? tools/readport? [1
+                                 "another"
+                                 {}])))
+
+
+
+(deftest-a
