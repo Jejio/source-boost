@@ -41,4 +41,12 @@
 
 
 
-(deftest-a
+(deftest-async test-constant
+  (go
+    (let [c (tools/constant 1)]
+      (is (= [1 1 1]
+             [(<! c) (<! c) (<! c)])))))
+
+(deftest-async test-cast-as-readport
+  (go
+    (let [channel (c
