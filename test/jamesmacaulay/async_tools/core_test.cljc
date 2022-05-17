@@ -27,4 +27,11 @@
           out (chan)
           ret (tools/do-effects (partial async/put! out) in)]
       (is (= in ret))
-   
+      (>! in 1)
+      (is (= 1 (<! out)))
+      (>! in 2)
+      (is (= 2 (<! out))))))
+
+(deftest readport?-test
+  (is (every? tools/readport? [(chan)
+                               (
