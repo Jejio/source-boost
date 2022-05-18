@@ -49,4 +49,9 @@
 
 (deftest-async test-cast-as-readport
   (go
-    (let [channel (c
+    (let [channel (chan)
+          not-a-channel {}]
+      (is (identical? channel
+                      (tools/cast-as-readport channel)))
+      (is (identical? not-a-channel
+                      (<! 
