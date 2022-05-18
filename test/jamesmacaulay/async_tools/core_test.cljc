@@ -54,4 +54,4 @@
       (is (identical? channel
                       (tools/cast-as-readport channel)))
       (is (identical? not-a-channel
-                      (<! 
+                      (<! (tools/cast-as-readport not-a-channel)))))))
