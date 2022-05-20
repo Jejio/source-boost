@@ -9,4 +9,6 @@
      :clj (:require [jamesmacaulay.async-tools.core :as tools]
                     [jamesmacaulay.zelkova.signal :as z]
                     [jamesmacaulay.zelkova.impl.signal :as impl]
-        
+                    [clojure.core.async :as async :refer [go go-loop chan to-chan <! >!]]
+                    [clojure.core.async.impl.protocols :as async-impl]
+               
