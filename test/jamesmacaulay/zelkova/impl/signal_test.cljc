@@ -13,4 +13,8 @@
                     [clojure.core.async.impl.protocols :as async-impl]
                     [jamesmacaulay.async-tools.test :refer (deftest-async)]
                     [clojure.test :refer (deftest is are testing)]))
-  #?(:cljs (:require-macros [c
+  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go go-loop]]
+                            [jamesmacaulay.async-tools.test :refer (deftest-async)])
+     :clj (:import [java.util.Date])))
+
+(deftest-async test-msg-fn-takes-ev
