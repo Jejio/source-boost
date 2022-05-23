@@ -17,4 +17,8 @@
                             [jamesmacaulay.async-tools.test :refer (deftest-async)])
      :clj (:import [java.util.Date])))
 
-(deftest-async test-msg-fn-takes-ev
+(deftest-async test-msg-fn-takes-event-and-previous-value-and-sequence-of-source-messages-and-returns-a-message
+  (go
+    (let [in1 (z/input 0 :in1)
+          in2 (z/input 0 :in2)
+         
