@@ -21,4 +21,6 @@
   (go
     (let [in1 (z/input 0 :in1)
           in2 (z/input 0 :in2)
-         
+          sig (impl/make-signal {:init-fn   (constantly :test-init)
+                                 :sources   [in1 in2]
+                                 :msg-xfo
