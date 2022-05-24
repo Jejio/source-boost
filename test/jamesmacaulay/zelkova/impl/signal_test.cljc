@@ -23,4 +23,7 @@
           in2 (z/input 0 :in2)
           sig (impl/make-signal {:init-fn   (constantly :test-init)
                                  :sources   [in1 in2]
-                                 :msg-xfo
+                                 :msg-xform (map (fn [payload] (impl/fresh payload)))})
+          live-graph (z/spawn sig)
+          output (async/tap live-graph (chan))
+          event1 (impl/->Event :in1 1 101)
