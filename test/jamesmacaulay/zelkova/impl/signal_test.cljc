@@ -35,4 +35,5 @@
                      expected1
                      [(impl/cached 1) (impl/fresh 2)]]]
       (async/onto-chan live-graph [event1 event2])
-      (is (= [expected1 exp
+      (is (= [expected1 expected2]
+             (<! (async/into [] output)))))))
