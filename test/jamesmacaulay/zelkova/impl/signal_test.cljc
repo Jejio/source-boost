@@ -31,4 +31,8 @@
           expected1 [event1
                      :test-init
                      [(impl/fresh 1) (impl/cached 0)]]
-          expected
+          expected2 [event2
+                     expected1
+                     [(impl/cached 1) (impl/fresh 2)]]]
+      (async/onto-chan live-graph [event1 event2])
+      (is (= [expected1 exp
