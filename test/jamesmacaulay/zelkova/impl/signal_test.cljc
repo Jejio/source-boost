@@ -27,3 +27,8 @@
           live-graph (z/spawn sig)
           output (async/tap live-graph (chan))
           event1 (impl/->Event :in1 1 101)
+          event2 (impl/->Event :in2 2 102)
+          expected1 [event1
+                     :test-init
+                     [(impl/fresh 1) (impl/cached 0)]]
+          expected
