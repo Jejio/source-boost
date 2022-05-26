@@ -7,4 +7,6 @@
                      [cemerick.cljs.test :refer-macros (deftest is are testing)])
      :clj (:require [jamesmacaulay.async-tools.core :as tools]
                     [jamesmacaulay.zelkova.signal :as z]
-                    [jamesmacaula
+                    [jamesmacaulay.zelkova.impl.signal :as impl]
+                    [clojure.core.async :as async :refer [go go-loop chan to-chan <! >!]]
+                    [clojure.core.async.i
