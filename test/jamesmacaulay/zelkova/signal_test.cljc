@@ -9,4 +9,6 @@
                     [jamesmacaulay.zelkova.signal :as z]
                     [jamesmacaulay.zelkova.impl.signal :as impl]
                     [clojure.core.async :as async :refer [go go-loop chan to-chan <! >!]]
-                    [clojure.core.async.i
+                    [clojure.core.async.impl.protocols :as async-impl]
+                    [jamesmacaulay.async-tools.test :refer (deftest-async)]
+                    [clojure.test :refer (deftest 
