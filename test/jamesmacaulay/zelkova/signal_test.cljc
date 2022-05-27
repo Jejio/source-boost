@@ -11,4 +11,6 @@
                     [clojure.core.async :as async :refer [go go-loop chan to-chan <! >!]]
                     [clojure.core.async.impl.protocols :as async-impl]
                     [jamesmacaulay.async-tools.test :refer (deftest-async)]
-                    [clojure.test :refer (deftest 
+                    [clojure.test :refer (deftest is are testing)]))
+  #?(:cljs (:require-macros [cljs.core.async.macros :refer [go go-loop]]
+                            [jamesmacaulay.async-tools.test :refe
