@@ -13,4 +13,12 @@
                     [jamesmacaulay.async-tools.test :refer (deftest-async)]
                     [clojure.test :refer (deftest is are testing)]))
   #?(:cljs (:require-macros [cljs.core.async.macros :refer [go go-loop]]
-                            [jamesmacaulay.async-tools.test :refe
+                            [jamesmacaulay.async-tools.test :refer (deftest-async)])
+     :clj (:import [java.util.Date])))
+
+(defn event-constructor
+  [topic]
+  (partial impl/make-event topic))
+
+(deftest test-signal-sources
+  (let [input (z/i
