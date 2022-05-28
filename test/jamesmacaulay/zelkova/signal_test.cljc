@@ -21,4 +21,10 @@
   (partial impl/make-event topic))
 
 (deftest test-signal-sources
-  (let [input (z/i
+  (let [input (z/input 0)
+        foldp (z/foldp + 0 input)
+        mapped (z/map vector input foldp)
+        async (z/async mapped)]
+    (are [sig sources] (= (impl/signal-deps sig) sources)
+      input #{}
+     
