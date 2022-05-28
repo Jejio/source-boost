@@ -34,4 +34,8 @@
 (deftest test-memoized-graph-calculations
   (let [input (z/input 0 :some-topic)
         foldp (z/foldp + 0 input)
-        
+        mapped (z/map vector input foldp)
+        async (z/async mapped)]
+    (are [sig parents-map] (= (impl/parents-map sig) parents-map)
+      input {input #{}}
+      foldp {input #{}
