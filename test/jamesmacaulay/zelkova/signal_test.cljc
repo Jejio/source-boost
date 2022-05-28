@@ -27,4 +27,11 @@
         async (z/async mapped)]
     (are [sig sources] (= (impl/signal-deps sig) sources)
       input #{}
-     
+      foldp #{input}
+      mapped #{input foldp}
+      async #{mapped})))
+
+(deftest test-memoized-graph-calculations
+  (let [input (z/input 0 :some-topic)
+        foldp (z/foldp + 0 input)
+        
