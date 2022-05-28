@@ -39,3 +39,9 @@
     (are [sig parents-map] (= (impl/parents-map sig) parents-map)
       input {input #{}}
       foldp {input #{}
+             foldp #{input}}
+      mapped {input #{}
+              foldp #{input}
+              mapped #{input foldp}}
+      async {input #{}
+             foldp #
