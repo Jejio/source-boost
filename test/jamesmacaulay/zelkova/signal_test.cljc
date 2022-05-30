@@ -54,4 +54,9 @@
       mapped {input #{foldp mapped}
               foldp #{mapped}
               mapped #{}}
-      async {input #{foldp ma
+      async {input #{foldp mapped}
+             foldp #{mapped}
+             mapped #{async}
+             async #{}})
+    (are [sig sorted-sigs] (= (impl/topsort sig) sorted-sigs)
+      input [inp
