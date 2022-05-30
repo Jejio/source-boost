@@ -48,4 +48,10 @@
              mapped #{input foldp}
              async #{mapped}})
     (are [sig kids-map] (= (impl/kids-map sig) kids-map)
-      input {input
+      input {input #{}}
+      foldp {input #{foldp}
+             foldp #{}}
+      mapped {input #{foldp mapped}
+              foldp #{mapped}
+              mapped #{}}
+      async {input #{foldp ma
