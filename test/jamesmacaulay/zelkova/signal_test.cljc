@@ -59,4 +59,9 @@
              mapped #{async}
              async #{}})
     (are [sig sorted-sigs] (= (impl/topsort sig) sorted-sigs)
-      input [inp
+      input [input]
+      foldp [input foldp]
+      mapped [input foldp mapped]
+      async [input foldp mapped async])
+    (are [sig kid-indexes-map] (= (impl/kid-indexes-map sig) kid-indexes-map)
+  
