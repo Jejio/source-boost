@@ -64,4 +64,10 @@
       mapped [input foldp mapped]
       async [input foldp mapped async])
     (are [sig kid-indexes-map] (= (impl/kid-indexes-map sig) kid-indexes-map)
-  
+      input {input #{}}
+      foldp {input #{1}
+             foldp #{}}
+      mapped {input #{1 2}
+              foldp #{2}
+              mapped #{}}
+      async {input 
