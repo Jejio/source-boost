@@ -70,4 +70,9 @@
       mapped {input #{1 2}
               foldp #{2}
               mapped #{}}
-      async {input 
+      async {input #{1 2}
+             foldp #{2}
+             mapped #{3}
+             async #{}})
+    (are [sig inputs-by-topic] (= (impl/inputs-by-topic sig) inputs-by-topic)
+      input {:some-to
