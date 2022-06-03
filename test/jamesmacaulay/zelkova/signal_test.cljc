@@ -75,4 +75,10 @@
              mapped #{3}
              async #{}})
     (are [sig inputs-by-topic] (= (impl/inputs-by-topic sig) inputs-by-topic)
-      input {:some-to
+      input {:some-topic [input]}
+      foldp {:some-topic [input]}
+      mapped {:some-topic [input]}
+      async {:some-topic [input]
+             (:relayed-event-topic async) [async]})))
+
+(deftest-async t
