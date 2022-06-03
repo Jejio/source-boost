@@ -81,4 +81,9 @@
       async {:some-topic [input]
              (:relayed-event-topic async) [async]})))
 
-(deftest-async t
+(deftest-async test-to-chan
+  (go
+    (let [in (z/write-port 0)
+          incrd (z/map inc in)
+          raw-out (z/to-chan incrd)
+          filtered-out (z/to-chan incrd 
