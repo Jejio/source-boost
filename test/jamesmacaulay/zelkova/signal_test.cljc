@@ -89,4 +89,11 @@
           filtered-out (z/to-chan incrd 1 (filter odd?))]
       (async/onto-chan in [1 2 3 4])
       (is (= [2 3 4 5] (<! (async/into [] raw-out))))
-      (is (= [3 5] (<! (async/into [] filtered-out))
+      (is (= [3 5] (<! (async/into [] filtered-out)))))))
+
+
+(deftest-async test-wiring-things-up
+  (go
+    (let [number (event-constructor :numbers)
+          letter (event-constructor :letters)
+          numbers-input (z/input 0 
