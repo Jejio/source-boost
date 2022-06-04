@@ -96,4 +96,8 @@
   (go
     (let [number (event-constructor :numbers)
           letter (event-constructor :letters)
-          numbers-input (z/input 0 
+          numbers-input (z/input 0 :numbers)
+          letters-input (z/input :a :letters)
+          pairs (z/map vector numbers-input letters-input)
+          live-graph (z/spawn pairs)
+      
