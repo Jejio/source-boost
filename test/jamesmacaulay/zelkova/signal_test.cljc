@@ -86,4 +86,7 @@
     (let [in (z/write-port 0)
           incrd (z/map inc in)
           raw-out (z/to-chan incrd)
-          filtered-out (z/to-chan incrd 
+          filtered-out (z/to-chan incrd 1 (filter odd?))]
+      (async/onto-chan in [1 2 3 4])
+      (is (= [2 3 4 5] (<! (async/into [] raw-out))))
+      (is (= [3 5] (<! (async/into [] filtered-out))
