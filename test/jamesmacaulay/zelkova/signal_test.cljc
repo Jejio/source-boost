@@ -100,4 +100,8 @@
           letters-input (z/input :a :letters)
           pairs (z/map vector numbers-input letters-input)
           live-graph (z/spawn pairs)
-      
+          output (async/tap live-graph (chan))]
+      (async/onto-chan live-graph
+                       [(number 1)
+                        (letter :b)
+  
