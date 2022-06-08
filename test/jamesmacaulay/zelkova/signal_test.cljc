@@ -113,4 +113,7 @@
   (go
     (let [numbers-input (z/write-port 0)
           output1 (z/to-chan numbers-input)
-         
+          output2 (z/to-chan numbers-input)
+          incremented-output (->> numbers-input
+                                  (z/map inc)
+                                  (z/to-cha
