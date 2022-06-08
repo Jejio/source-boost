@@ -109,4 +109,8 @@
       (is (= [[1 :a] [1 :b] [2 :b] [2 :c]]
              (<! (async/into [] output)))))))
 
-(deftest-async test-
+(deftest-async test-write-port-broadcasts-to-all-dependent-live-graphs
+  (go
+    (let [numbers-input (z/write-port 0)
+          output1 (z/to-chan numbers-input)
+         
