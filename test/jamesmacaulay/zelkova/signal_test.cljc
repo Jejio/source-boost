@@ -104,4 +104,9 @@
       (async/onto-chan live-graph
                        [(number 1)
                         (letter :b)
-  
+                        (number 2)
+                        (letter :c)])
+      (is (= [[1 :a] [1 :b] [2 :b] [2 :c]]
+             (<! (async/into [] output)))))))
+
+(deftest-async test-
