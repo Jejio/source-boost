@@ -116,4 +116,7 @@
           output2 (z/to-chan numbers-input)
           incremented-output (->> numbers-input
                                   (z/map inc)
-                                  (z/to-cha
+                                  (z/to-chan))]
+      (async/onto-chan numbers-input [1 2 3 4])
+      (is (= [1 2 3 4] (<! (async/into [] output1))))
+      (is (= [1 2 3 4] (<! (async/into 
