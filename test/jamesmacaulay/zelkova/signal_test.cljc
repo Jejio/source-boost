@@ -119,4 +119,10 @@
                                   (z/to-chan))]
       (async/onto-chan numbers-input [1 2 3 4])
       (is (= [1 2 3 4] (<! (async/into [] output1))))
-      (is (= [1 2 3 4] (<! (async/into 
+      (is (= [1 2 3 4] (<! (async/into [] output2))))
+      (is (= [2 3 4 5] (<! (async/into [] incremented-output)))))))
+
+(deftest-async test-io
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 
