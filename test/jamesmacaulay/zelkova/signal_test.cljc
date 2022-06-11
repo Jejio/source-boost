@@ -125,4 +125,9 @@
 (deftest-async test-io
   (go
     (let [number (event-constructor :numbers)
-          in (z/input 
+          in (z/input 0 :numbers)
+          graph (z/spawn in)
+          out (async/tap graph (chan))]
+      (is (= 0 (impl/init graph)))
+      (async/onto-chan graph (map number [1 2 3]))
+      (is (
