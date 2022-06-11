@@ -130,4 +130,10 @@
           out (async/tap graph (chan))]
       (is (= 0 (impl/init graph)))
       (async/onto-chan graph (map number [1 2 3]))
-      (is (
+      (is (= [1 2 3]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-map
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :numbers)
