@@ -137,3 +137,8 @@
   (go
     (let [number (event-constructor :numbers)
           in (z/input 0 :numbers)
+          incremented (z/map inc in)
+          graph (z/spawn incremented)
+          out (async/tap graph (chan))]
+      (is (= 1 (impl/init graph)))
+      (async/onto-chan graph 
