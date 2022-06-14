@@ -141,4 +141,8 @@
           graph (z/spawn incremented)
           out (async/tap graph (chan))]
       (is (= 1 (impl/init graph)))
-      (async/onto-chan graph 
+      (async/onto-chan graph (map number [1 2 3]))
+      (is (= [2 3 4]
+             (<! (async/into [] out)))))
+    (let [[a b c] (map event-constructor [:a :b :c])
+          ins (map (part
