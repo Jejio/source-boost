@@ -145,4 +145,8 @@
       (is (= [2 3 4]
              (<! (async/into [] out)))))
     (let [[a b c] (map event-constructor [:a :b :c])
-          ins (map (part
+          ins (map (partial z/input 0) [:a :b :c])
+          summed (apply z/map + ins)
+          graph (z/spawn summed)
+          out (async/tap graph (chan))]
+      (is (= 0 
