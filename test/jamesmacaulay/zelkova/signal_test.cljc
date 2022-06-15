@@ -154,3 +154,8 @@
       (is (= [1 3 6 15]
              (<! (async/into [] out)))))
     (let [zero-arity-+-map (z/spawn (z/map +))
+          zero-arity-vector-map (z/spawn (z/map vector))]
+      (is (= 0 (impl/init zero-arity-+-map)))
+      (is (= [] (impl/init zero-arity-vector-map))))))
+
+(deftest
