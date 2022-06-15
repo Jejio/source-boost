@@ -149,4 +149,8 @@
           summed (apply z/map + ins)
           graph (z/spawn summed)
           out (async/tap graph (chan))]
-      (is (= 0 
+      (is (= 0 (impl/init graph)))
+      (async/onto-chan graph [(a 1) (b 2) (c 3) (a 10)])
+      (is (= [1 3 6 15]
+             (<! (async/into [] out)))))
+    (let [zero-arity-+-map (z/spawn (z/map +))
