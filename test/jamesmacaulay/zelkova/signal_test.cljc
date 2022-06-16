@@ -158,4 +158,9 @@
       (is (= 0 (impl/init zero-arity-+-map)))
       (is (= [] (impl/init zero-arity-vector-map))))))
 
-(deftest
+(deftest-async test-foldp
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :numbers)
+          sum (z/foldp + 0 in)
+          graph (z/s
