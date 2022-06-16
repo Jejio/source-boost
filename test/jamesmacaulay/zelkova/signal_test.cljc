@@ -163,4 +163,8 @@
     (let [number (event-constructor :numbers)
           in (z/input 0 :numbers)
           sum (z/foldp + 0 in)
-          graph (z/s
+          graph (z/spawn sum)
+          out (async/tap graph (chan))]
+      (is (= 0 (impl/init graph)))
+      (async/onto-chan graph (map number [1 2 3]))
+      (is (= [1 3 6
