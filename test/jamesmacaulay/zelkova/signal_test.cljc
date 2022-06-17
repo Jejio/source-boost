@@ -167,4 +167,10 @@
           out (async/tap graph (chan))]
       (is (= 0 (impl/init graph)))
       (async/onto-chan graph (map number [1 2 3]))
-      (is (= [1 3 6
+      (is (= [1 3 6]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-reductions-can-get-init-value-from-calling-function-with-zero-args
+  (go
+    (let [in (z/write-port 0)
+        
