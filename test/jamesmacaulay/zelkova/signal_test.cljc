@@ -173,4 +173,8 @@
 (deftest-async test-reductions-can-get-init-value-from-calling-function-with-zero-args
   (go
     (let [in (z/write-port 0)
-        
+          vectors (z/reductions conj in)
+          out (z/to-chan vectors)]
+      (async/onto-chan in [1 2 3])
+      (is (= [[1] [1 2] [1 2 3]]
+             (
