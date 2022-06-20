@@ -177,4 +177,10 @@
           out (z/to-chan vectors)]
       (async/onto-chan in [1 2 3])
       (is (= [[1] [1 2] [1 2 3]]
-             (
+             (<! (async/into [] out)))))))
+
+(deftest-async test-reductions-with-init-value
+  (go
+    (let [in (z/write-port nil)
+          vectors (z/reductions conj {} in)
+          out
