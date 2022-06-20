@@ -183,4 +183,9 @@
   (go
     (let [in (z/write-port nil)
           vectors (z/reductions conj {} in)
-          out
+          out (z/to-chan vectors)]
+      (async/onto-chan in [[:a 1] [:b 2] [:c 3]])
+      (is (= [{:a 1} {:a 1 :b 2} {:a 1 :b 2 :c 3}]
+             (<! (async/into [] out)))))))
+
+(deftest-
