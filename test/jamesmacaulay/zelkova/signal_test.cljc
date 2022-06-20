@@ -188,4 +188,8 @@
       (is (= [{:a 1} {:a 1 :b 2} {:a 1 :b 2 :c 3}]
              (<! (async/into [] out)))))))
 
-(deftest-
+(deftest-async test-regular-signals-are-synchronous
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :numbers)
+          decremented (z/map dec i
