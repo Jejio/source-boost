@@ -200,4 +200,11 @@
                                  incremented)
           graph (z/spawn combined)
           out (async/tap graph (chan))]
-      (async/onto-chan graph (map nu
+      (async/onto-chan graph (map number [2 10]))
+      (is (= [{:decremented 1
+               :incremented 3}
+              {:decremented 9
+               :incremented 11}]
+             (<! (async/into [] out)))))))
+
+(def
