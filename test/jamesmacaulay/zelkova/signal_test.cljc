@@ -196,4 +196,8 @@
           incremented (z/map inc in)
           combined (z/map (fn [a b] {:decremented a
                                             :incremented b})
-              
+                                 decremented
+                                 incremented)
+          graph (z/spawn combined)
+          out (async/tap graph (chan))]
+      (async/onto-chan graph (map nu
