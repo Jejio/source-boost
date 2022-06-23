@@ -192,4 +192,8 @@
   (go
     (let [number (event-constructor :numbers)
           in (z/input 0 :numbers)
-          decremented (z/map dec i
+          decremented (z/map dec in)
+          incremented (z/map inc in)
+          combined (z/map (fn [a b] {:decremented a
+                                            :incremented b})
+              
