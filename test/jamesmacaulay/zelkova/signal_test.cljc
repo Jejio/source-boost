@@ -207,4 +207,9 @@
                :incremented 11}]
              (<! (async/into [] out)))))))
 
-(def
+(deftest-async test-constant
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :numbers)
+          foo (z/constant :foo)
+          combined (z/map
