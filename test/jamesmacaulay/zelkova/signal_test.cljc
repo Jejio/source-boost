@@ -216,4 +216,11 @@
           graph (z/spawn combined)
           out (async/tap graph (chan))]
       (is (= [0 :foo] (impl/init graph)))
-      (async/onto-chan graph (map n
+      (async/onto-chan graph (map number [1 2 3]))
+      (is (= [[1 :foo] [2 :foo] [3 :foo]]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-merge
+  (go
+    (let [a (event-constructor :a)
+       
