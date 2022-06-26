@@ -223,4 +223,9 @@
 (deftest-async test-merge
   (go
     (let [a (event-constructor :a)
-       
+          b (event-constructor :b)
+          a-in (z/input 10 :a)
+          b-in (z/input 20 :b)
+          b-dec (z/map dec b-in)
+          b-inc (z/map inc b-in)
+          merged (z/merge a-in b-d
