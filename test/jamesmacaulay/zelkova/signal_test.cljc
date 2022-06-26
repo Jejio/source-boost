@@ -212,4 +212,8 @@
     (let [number (event-constructor :numbers)
           in (z/input 0 :numbers)
           foo (z/constant :foo)
-          combined (z/map
+          combined (z/map vector in foo)
+          graph (z/spawn combined)
+          out (async/tap graph (chan))]
+      (is (= [0 :foo] (impl/init graph)))
+      (async/onto-chan graph (map n
