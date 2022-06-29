@@ -239,4 +239,9 @@
 (deftest-async test-combine
   (go
     (let [number (event-constructor :numbers)
-          in (z/
+          in (z/input 0 :numbers)
+          inc'd (z/map inc in)
+          combined (z/combine [in inc'd])
+          graph (z/spawn combined)
+          out (async/tap graph (chan))]
+      (is (= [0 1] (impl/init g
