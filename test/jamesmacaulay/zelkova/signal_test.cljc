@@ -232,4 +232,11 @@
           graph (z/spawn merged)
           out (async/tap graph (chan))]
       (is (= 10 (impl/init graph)))
-      (async/onto-chan graph [(a 20) (
+      (async/onto-chan graph [(a 20) (b 30) (a 40) (b 50)])
+      (is (= [20 29 40 49]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-combine
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/
