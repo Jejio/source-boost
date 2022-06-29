@@ -249,4 +249,10 @@
       (is (= [[1 2] [2 3]]
              (<! (async/into [] out)))))
     (let [empty-combined (z/spawn (z/combine []))]
-   
+      (is (= [] (impl/init empty-combined))))))
+
+
+(deftest-async test-sample-on
+  (go
+    (let [pos (event-constructor :mouse-position)
+          click ((event-con
