@@ -244,4 +244,9 @@
           combined (z/combine [in inc'd])
           graph (z/spawn combined)
           out (async/tap graph (chan))]
-      (is (= [0 1] (impl/init g
+      (is (= [0 1] (impl/init graph)))
+      (async/onto-chan graph (map number [1 2]))
+      (is (= [[1 2] [2 3]]
+             (<! (async/into [] out)))))
+    (let [empty-combined (z/spawn (z/combine []))]
+   
