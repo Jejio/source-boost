@@ -255,4 +255,7 @@
 (deftest-async test-sample-on
   (go
     (let [pos (event-constructor :mouse-position)
-          click ((event-con
+          click ((event-constructor :mouse-clicks) :click)
+          fake-mouse-position (z/input [0 0] :mouse-position)
+          fake-mouse-clicks (z/input :click :mouse-clicks)
+     
