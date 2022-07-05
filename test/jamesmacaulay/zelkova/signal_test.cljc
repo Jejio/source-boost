@@ -272,4 +272,10 @@
                         (pos [50 50])
                         click])
       (is (= [[10 10] [30 30] [50 50]]
-         
+             (<! (async/into [] out)))))))
+
+(deftest-async test-count
+  (go
+    (let [in1-event (event-constructor :in1)
+          in2-event (event-constructor :in2)
+          in
