@@ -262,4 +262,9 @@
           graph (z/spawn sampled)
           out (async/tap graph (chan))]
       (is (= [0 0] (impl/init graph)))
- 
+      (async/onto-chan graph
+                       [(pos [10 10])
+                        click
+                        (pos [20 20])
+                        (pos [30 30])
+                   
