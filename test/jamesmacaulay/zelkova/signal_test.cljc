@@ -258,4 +258,8 @@
           click ((event-constructor :mouse-clicks) :click)
           fake-mouse-position (z/input [0 0] :mouse-position)
           fake-mouse-clicks (z/input :click :mouse-clicks)
-     
+          sampled (z/sample-on fake-mouse-clicks fake-mouse-position)
+          graph (z/spawn sampled)
+          out (async/tap graph (chan))]
+      (is (= [0 0] (impl/init graph)))
+ 
