@@ -283,4 +283,8 @@
           count1 (z/count in1)
           combined (z/map vector count1 in1 in2)
           graph (z/spawn combined)
-          out (
+          out (async/tap graph (chan))]
+      (is (= [0 1 1] (impl/init graph)))
+      (async/onto-chan graph [(in1-event 2)
+                              (in1-event 3)
+                           
