@@ -278,4 +278,9 @@
   (go
     (let [in1-event (event-constructor :in1)
           in2-event (event-constructor :in2)
-          in
+          in1 (z/input 1 :in1)
+          in2 (z/input 1 :in2)
+          count1 (z/count in1)
+          combined (z/map vector count1 in1 in2)
+          graph (z/spawn combined)
+          out (
