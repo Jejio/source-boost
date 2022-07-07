@@ -293,4 +293,10 @@
               [2 3 1]
               [2 3 2]
               [3 4 2]]
-             (<! (async/into [] out))
+             (<! (async/into [] out)))))))
+
+(deftest-async test-count-if
+  (go
+    (let [in1-event (event-constructor :in1)
+          in2-event (event-constructor :in2)
+          in1 (z/input 1 :in1)
