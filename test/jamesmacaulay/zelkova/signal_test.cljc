@@ -287,4 +287,10 @@
       (is (= [0 1 1] (impl/init graph)))
       (async/onto-chan graph [(in1-event 2)
                               (in1-event 3)
-                           
+                              (in2-event 2)
+                              (in1-event 4)])
+      (is (= [[1 2 1]
+              [2 3 1]
+              [2 3 2]
+              [3 4 2]]
+             (<! (async/into [] out))
