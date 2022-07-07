@@ -300,3 +300,7 @@
     (let [in1-event (event-constructor :in1)
           in2-event (event-constructor :in2)
           in1 (z/input 1 :in1)
+          in2 (z/input 1 :in2)
+          count1-odd (z/count-if odd? in1)
+          combined (z/map vector count1-odd in1 in2)
+          graph (z/s
