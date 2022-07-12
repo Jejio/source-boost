@@ -310,4 +310,12 @@
                               (in1-event 3)
                               (in2-event 2)
                               (in1-event 4)
-                              (in1
+                              (in1-event 5)])
+      (is (= [[0 2 1]
+              [1 3 1]
+              [1 3 2]
+              [1 4 2]
+              [2 5 2]]
+             (<! (async/into [] out)))))))
+
+(defte
