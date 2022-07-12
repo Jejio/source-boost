@@ -303,4 +303,7 @@
           in2 (z/input 1 :in2)
           count1-odd (z/count-if odd? in1)
           combined (z/map vector count1-odd in1 in2)
-          graph (z/s
+          graph (z/spawn combined)
+          out (async/tap graph (chan))]
+      (is (= [0 1 1] (impl/init graph)))
+      (async/onto-chan gr
