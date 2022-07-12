@@ -306,4 +306,8 @@
           graph (z/spawn combined)
           out (async/tap graph (chan))]
       (is (= [0 1 1] (impl/init graph)))
-      (async/onto-chan gr
+      (async/onto-chan graph [(in1-event 2)
+                              (in1-event 3)
+                              (in2-event 2)
+                              (in1-event 4)
+                              (in1
