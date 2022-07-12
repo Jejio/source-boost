@@ -318,4 +318,9 @@
               [2 5 2]]
              (<! (async/into [] out)))))))
 
-(defte
+(deftest-async test-keep-if
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :numbers)
+          oddnums (z/keep-if odd? -1 in)
+          count-odd (z/count odd
