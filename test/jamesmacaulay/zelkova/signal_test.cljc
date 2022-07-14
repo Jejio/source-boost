@@ -327,4 +327,7 @@
           evennums (z/keep-if even? -2 in)
           count-even (z/count evennums)
           combined (z/map vector oddnums count-odd evennums count-even)
-     
+          graph (z/spawn combined)
+          out (async/tap graph (chan))]
+      (is (= [-1 0 0 0] (impl/init graph)))
+      (async/onto-chan graph (map numb
