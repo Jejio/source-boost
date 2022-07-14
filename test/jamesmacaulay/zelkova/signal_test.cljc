@@ -330,4 +330,12 @@
           graph (z/spawn combined)
           out (async/tap graph (chan))]
       (is (= [-1 0 0 0] (impl/init graph)))
-      (async/onto-chan graph (map numb
+      (async/onto-chan graph (map number [1 2 3]))
+      (is (= [[1 1 0 0]
+              [1 1 2 1]
+              [3 2 2 1]]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-keep-when
+  (go
+    (let 
