@@ -323,4 +323,8 @@
     (let [number (event-constructor :numbers)
           in (z/input 0 :numbers)
           oddnums (z/keep-if odd? -1 in)
-          count-odd (z/count odd
+          count-odd (z/count oddnums)
+          evennums (z/keep-if even? -2 in)
+          count-even (z/count evennums)
+          combined (z/map vector oddnums count-odd evennums count-even)
+     
