@@ -344,4 +344,7 @@
           letters-in (z/input :a :letters)
           odd-kept-letters (z/keep-when (z/map odd? numbers-in) :false-init letters-in)
           graph (z/spawn odd-kept-letters)
-          out (async/tap graph (c
+          out (async/tap graph (chan))]
+      (is (= :false-init (impl/init graph)))
+      (is (= :a (impl/init (z/spawn (z/keep-when (z/map even? numbers-in) :z letters-in)))))
+      
