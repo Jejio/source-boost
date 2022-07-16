@@ -341,4 +341,7 @@
     (let [number (event-constructor :numbers)
           letter (event-constructor :letters)
           numbers-in (z/input 0 :numbers)
-          letters-in (z/input :a :lett
+          letters-in (z/input :a :letters)
+          odd-kept-letters (z/keep-when (z/map odd? numbers-in) :false-init letters-in)
+          graph (z/spawn odd-kept-letters)
+          out (async/tap graph (c
