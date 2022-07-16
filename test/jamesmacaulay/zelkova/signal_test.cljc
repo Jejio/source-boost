@@ -338,4 +338,7 @@
 
 (deftest-async test-keep-when
   (go
-    (let 
+    (let [number (event-constructor :numbers)
+          letter (event-constructor :letters)
+          numbers-in (z/input 0 :numbers)
+          letters-in (z/input :a :lett
