@@ -347,4 +347,8 @@
           out (async/tap graph (chan))]
       (is (= :false-init (impl/init graph)))
       (is (= :a (impl/init (z/spawn (z/keep-when (z/map even? numbers-in) :z letters-in)))))
+      (async/onto-chan graph [(letter :b)
+                              (number 1)
+                              (letter :c)
+                              (number 2)
       
