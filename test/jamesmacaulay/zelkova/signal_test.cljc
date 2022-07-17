@@ -351,4 +351,7 @@
                               (number 1)
                               (letter :c)
                               (number 2)
-      
+                              (letter :d)
+                              (letter :e)
+                              (number 3)
+                              (letter :f
