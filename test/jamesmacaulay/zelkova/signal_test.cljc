@@ -360,4 +360,9 @@
 (deftest-async test-drop-repeats
   (go
     (let [number (event-constructor :numbers)
-          in (z/input 0 :num
+          in (z/input 0 :numbers)
+          no-repeats (z/drop-repeats in)
+          graph (z/spawn no-repeats)
+          out (async/tap graph (chan))]
+      (is (= 0 (impl/init graph)))
+      (async/onto-chan gra
