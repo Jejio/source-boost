@@ -365,4 +365,9 @@
           graph (z/spawn no-repeats)
           out (async/tap graph (chan))]
       (is (= 0 (impl/init graph)))
-      (async/onto-chan gra
+      (async/onto-chan graph (map number [1 1 2 1 2 2 2 1 1]))
+      (is (= [1 2 1 2 1] (<! (async/into [] out)))))))
+
+(deftest-async test-world-building-with-value-source-channel-fn
+  (go
+    (let [value-source (async/to-chan [[10 
