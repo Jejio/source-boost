@@ -370,4 +370,7 @@
 
 (deftest-async test-world-building-with-value-source-channel-fn
   (go
-    (let [value-source (async/to-chan [[10 
+    (let [value-source (async/to-chan [[10 10]
+                                       [20 20]
+                                       [30 30]])
+          mouse-position (z/input [0 0] :mouse-position (cons
