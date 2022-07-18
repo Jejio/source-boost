@@ -354,4 +354,10 @@
                               (letter :d)
                               (letter :e)
                               (number 3)
-                              (letter :f
+                              (letter :f)])
+      (is (= [:c :f] (<! (async/into [] out)))))))
+
+(deftest-async test-drop-repeats
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :num
