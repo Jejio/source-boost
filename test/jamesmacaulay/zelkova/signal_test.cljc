@@ -373,4 +373,9 @@
     (let [value-source (async/to-chan [[10 10]
                                        [20 20]
                                        [30 30]])
-          mouse-position (z/input [0 0] :mouse-position (cons
+          mouse-position (z/input [0 0] :mouse-position (constantly value-source))
+          out (z/to-chan mouse-position)]
+      (is (= [[10 10] [20 20] [30 30]]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-input-with-value-sou
