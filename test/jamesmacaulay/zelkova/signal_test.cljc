@@ -383,4 +383,11 @@
     (let [value-source (async/chan)
           numbers (z/input 0 :numbers (async/mult value-source))
           out (z/to-chan numbers)]
-      (async/onto-cha
+      (async/onto-chan value-source [1 2 3])
+      (is (= [1 2 3]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-input-with-value-source-channel
+  (go
+    (let [value-source (async/chan)
+  
