@@ -378,4 +378,9 @@
       (is (= [[10 10] [20 20] [30 30]]
              (<! (async/into [] out)))))))
 
-(deftest-async test-input-with-value-sou
+(deftest-async test-input-with-value-source-mult
+  (go
+    (let [value-source (async/chan)
+          numbers (z/input 0 :numbers (async/mult value-source))
+          out (z/to-chan numbers)]
+      (async/onto-cha
