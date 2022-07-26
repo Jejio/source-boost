@@ -390,4 +390,8 @@
 (deftest-async test-input-with-value-source-channel
   (go
     (let [value-source (async/chan)
-  
+          numbers (z/input 0 :numbers value-source)
+          out (z/to-chan numbers)]
+      (async/onto-chan value-source [1 2 3])
+      (is (= [1 2 3]
+             (<! (async/into
