@@ -400,4 +400,8 @@
   (go
     (let [number (event-constructor :numbers)
           in (z/input 0 :numbers)
-          decrem
+          decremented (z/map dec in)
+          incremented (z/map inc in)
+          async-incremented (z/async incremented)
+          combined (z/combine [decremented async-incremented])
+          graph (z/spawn comb
