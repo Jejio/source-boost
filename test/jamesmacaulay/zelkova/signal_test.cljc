@@ -394,4 +394,10 @@
           out (z/to-chan numbers)]
       (async/onto-chan value-source [1 2 3])
       (is (= [1 2 3]
-             (<! (async/into
+             (<! (async/into [] out)))))))
+
+(deftest-async test-async-makes-signals-asynchronous
+  (go
+    (let [number (event-constructor :numbers)
+          in (z/input 0 :numbers)
+          decrem
