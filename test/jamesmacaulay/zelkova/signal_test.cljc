@@ -410,4 +410,11 @@
       (>! graph (number 1))
       (is (= [0 1] (<! out)))
       (is (= [0 2] (<! out)))
-      (>! 
+      (>! graph (number 2))
+      (is (= [1 2] (<! out)))
+      (is (= [1 3] (<! out)))
+      (async/close! graph)
+      (is (= nil (<! out))))))
+
+(deftest test-template
+  (let [tmpl (z/template {:a (z/i
