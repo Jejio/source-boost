@@ -404,4 +404,10 @@
           incremented (z/map inc in)
           async-incremented (z/async incremented)
           combined (z/combine [decremented async-incremented])
-          graph (z/spawn comb
+          graph (z/spawn combined)
+          out (async/tap graph (chan))]
+      (is (= [-1 1] (impl/init graph)))
+      (>! graph (number 1))
+      (is (= [0 1] (<! out)))
+      (is (= [0 2] (<! out)))
+      (>! 
