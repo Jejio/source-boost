@@ -424,3 +424,6 @@
 
 (deftest-async test-indexed-updates
   (go
+    (let [in (z/write-port 0)
+          incrd-evens (->> in (z/map inc) (z/keep-if even?))
+          doubled-less-than-5 (->> in (z/map (partial * 2)) (z/keep-if (part
