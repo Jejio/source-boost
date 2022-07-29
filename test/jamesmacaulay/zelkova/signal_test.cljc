@@ -417,4 +417,10 @@
       (is (= nil (<! out))))))
 
 (deftest test-template
-  (let [tmpl (z/template {:a (z/i
+  (let [tmpl (z/template {:a (z/input 1 :a)
+                          :b (z/input 2 :b)})]
+    (is (= {:a 1 :b 2}
+           (impl/init (z/spawn tmpl))))))
+
+(deftest-async test-indexed-updates
+  (go
