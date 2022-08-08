@@ -432,4 +432,9 @@
                                       :doubled-less-than-5 doubled-less-than-5
                                       :tripled-odds        tripled-odds})
           out (z/to-chan updates)]
-      (async/onto-chan in [1
+      (async/onto-chan in [1 2 3 4 5])
+      (is (= [{:incrd-evens         2
+               :doubled-less-than-5 2
+               :tripled-odds        3}
+              {:doubled-less-than-5 4}
+       
