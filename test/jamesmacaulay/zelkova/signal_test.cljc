@@ -429,4 +429,7 @@
           doubled-less-than-5 (->> in (z/map (partial * 2)) (z/keep-if (partial > 5)))
           tripled-odds (->> in (z/map (partial * 3)) (z/keep-if odd?))
           updates (z/indexed-updates {:incrd-evens         incrd-evens
-                          
+                                      :doubled-less-than-5 doubled-less-than-5
+                                      :tripled-odds        tripled-odds})
+          out (z/to-chan updates)]
+      (async/onto-chan in [1
