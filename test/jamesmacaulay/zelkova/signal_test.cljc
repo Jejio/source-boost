@@ -437,4 +437,9 @@
                :doubled-less-than-5 2
                :tripled-odds        3}
               {:doubled-less-than-5 4}
-       
+              {:incrd-evens  4
+               :tripled-odds 9}
+              ; no updates from 4
+              {:incrd-evens  6
+               :tripled-odds 15}]
+      
