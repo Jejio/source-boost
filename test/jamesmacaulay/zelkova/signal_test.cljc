@@ -442,4 +442,10 @@
               ; no updates from 4
               {:incrd-evens  6
                :tripled-odds 15}]
-      
+             (<! (async/into [] out)))))))
+
+(deftest-async test-select-step
+  (go
+    (let [in (z/write-port 0)
+          incrd-evens (->> in (z/map inc) (z/keep-if even?))
+          double
