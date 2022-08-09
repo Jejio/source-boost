@@ -448,4 +448,6 @@
   (go
     (let [in (z/write-port 0)
           incrd-evens (->> in (z/map inc) (z/keep-if even?))
-          double
+          doubled-less-than-5 (->> in (z/map (partial * 2)) (z/keep-if (partial > 5)))
+          tripled-odds (->> in (z/map (partial * 3)) (z/keep-if odd?))
+          keyword-handler 
