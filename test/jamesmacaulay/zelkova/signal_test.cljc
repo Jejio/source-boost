@@ -450,4 +450,8 @@
           incrd-evens (->> in (z/map inc) (z/keep-if even?))
           doubled-less-than-5 (->> in (z/map (partial * 2)) (z/keep-if (partial > 5)))
           tripled-odds (->> in (z/map (partial * 3)) (z/keep-if odd?))
-          keyword-handler 
+          keyword-handler (fn [k]
+                            (fn [state n]
+                              (merge-with concat state {k [n]})))
+          stepper (z/select-step {}
+                                 incrd
