@@ -454,4 +454,6 @@
                             (fn [state n]
                               (merge-with concat state {k [n]})))
           stepper (z/select-step {}
-                                 incrd
+                                 incrd-evens (keyword-handler :incrd-evens)
+                                 doubled-less-than-5 (keyword-handler :doubled-less-than-5)
+                                 tripled-odds (ke
