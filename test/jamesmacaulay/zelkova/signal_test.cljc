@@ -456,4 +456,8 @@
           stepper (z/select-step {}
                                  incrd-evens (keyword-handler :incrd-evens)
                                  doubled-less-than-5 (keyword-handler :doubled-less-than-5)
-                                 tripled-odds (ke
+                                 tripled-odds (keyword-handler :tripled-odds))
+          out (z/to-chan stepper)]
+      (async/onto-chan in [1 2 3 4 5])
+      (is (= [{:incrd-evens         [2]
+               :double
