@@ -460,4 +460,8 @@
           out (z/to-chan stepper)]
       (async/onto-chan in [1 2 3 4 5])
       (is (= [{:incrd-evens         [2]
-               :double
+               :doubled-less-than-5 [2]
+               :tripled-odds        [3]}
+              {:incrd-evens         [2]
+               :doubled-less-than-5 [2 4]
+               
