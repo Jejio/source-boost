@@ -464,4 +464,9 @@
                :tripled-odds        [3]}
               {:incrd-evens         [2]
                :doubled-less-than-5 [2 4]
-               
+               :tripled-odds        [3]}
+              {:incrd-evens         [2 4]
+               :doubled-less-than-5 [2 4]
+               :tripled-odds        [3 9]}
+              ; no updates from 4
+              {:incrd-e
