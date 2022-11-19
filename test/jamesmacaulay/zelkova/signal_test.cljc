@@ -469,4 +469,9 @@
                :doubled-less-than-5 [2 4]
                :tripled-odds        [3 9]}
               ; no updates from 4
-              {:incrd-e
+              {:incrd-evens         [2 4 6]
+               :doubled-less-than-5 [2 4]
+               :tripled-odds        [3 9 15]}]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-pipeline-
