@@ -474,4 +474,9 @@
                :tripled-odds        [3 9 15]}]
              (<! (async/into [] out)))))))
 
-(deftest-async test-pipeline-
+(deftest-async test-pipeline-works-with-transducers
+  (go
+    (let [ch (async/chan)
+          graph (->> ch
+                     (z/input [0] :number-vectors)
+                     (z/pipeline (com
