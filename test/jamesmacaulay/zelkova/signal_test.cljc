@@ -488,4 +488,11 @@
       (is (= 1 (impl/init graph)))
       (async/onto-chan ch [[1 2 3]
                            [4 5 6 7]
-                        
+                           [8 9]
+                           [10]])
+      (is (= [3 5 7 9 11]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-pipeline-cat-gets-folded-correctly
+  (go
+    (let
