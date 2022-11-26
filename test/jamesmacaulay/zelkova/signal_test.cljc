@@ -484,4 +484,8 @@
                                        (filter odd?))
                                  99)
                      (z/spawn))
-        
+          out (async/tap graph (chan))]
+      (is (= 1 (impl/init graph)))
+      (async/onto-chan ch [[1 2 3]
+                           [4 5 6 7]
+                        
