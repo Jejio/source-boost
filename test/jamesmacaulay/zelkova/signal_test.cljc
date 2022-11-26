@@ -479,4 +479,9 @@
     (let [ch (async/chan)
           graph (->> ch
                      (z/input [0] :number-vectors)
-                     (z/pipeline (com
+                     (z/pipeline (comp cat
+                                       (map inc)
+                                       (filter odd?))
+                                 99)
+                     (z/spawn))
+        
