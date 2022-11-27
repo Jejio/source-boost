@@ -500,4 +500,8 @@
                      (z/input [0] :number-vectors)
                      (z/pipeline cat 0)
                      (z/foldp + 0)
-     
+                     (z/spawn))
+          out (async/tap graph (chan))]
+      (async/onto-chan ch [[1 2 3]
+                           [4 5 6 7]
+                           [8 9]
