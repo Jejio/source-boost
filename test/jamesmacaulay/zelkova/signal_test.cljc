@@ -495,4 +495,9 @@
 
 (deftest-async test-pipeline-cat-gets-folded-correctly
   (go
-    (let
+    (let [ch (async/chan)
+          graph (->> ch
+                     (z/input [0] :number-vectors)
+                     (z/pipeline cat 0)
+                     (z/foldp + 0)
+     
