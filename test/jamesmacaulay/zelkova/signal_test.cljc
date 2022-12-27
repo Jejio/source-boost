@@ -505,3 +505,9 @@
       (async/onto-chan ch [[1 2 3]
                            [4 5 6 7]
                            [8 9]
+                           [10]])
+      (is (= [1 3 6 10 15 21 28 36 45 55]
+             (<! (async/into [] out)))))))
+
+(deftest test-pipeline-uses-last-message-in-batch-for-init
+  (i
