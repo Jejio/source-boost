@@ -510,4 +510,9 @@
              (<! (async/into [] out)))))))
 
 (deftest test-pipeline-uses-last-message-in-batch-for-init
-  (i
+  (is (= 4 (->> (z/input [1 2 3 4] :number-vectors)
+                (z/pipeline cat 0)
+                (z/spawn)
+                (impl/init)))))
+
+(deftest test-pipeline-falls
