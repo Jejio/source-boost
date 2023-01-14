@@ -529,4 +529,10 @@
                      (z/pipeline (drop 1) 99)
                      (z/spawn))
           out (async/tap graph (chan))]
-      (is (= 99 (imp
+      (is (= 99 (impl/init graph)))
+      (async/onto-chan ch [1 2 3 4])
+      (is (= []
+             (<! (async/into [] out)))))
+    (let [ch (async/chan)
+          graph (->> ch
+            
