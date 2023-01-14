@@ -525,3 +525,8 @@
   (go
     (let [ch (async/chan)
           graph (->> ch
+                     (z/input 0 :numbers)
+                     (z/pipeline (drop 1) 99)
+                     (z/spawn))
+          out (async/tap graph (chan))]
+      (is (= 99 (imp
