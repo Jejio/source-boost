@@ -519,4 +519,9 @@
   (is (= 99 (->> (z/input 0 :numbers)
                  (z/pipeline (filter odd?) 99)
                  (z/spawn)
-                 (impl/init))
+                 (impl/init)))))
+
+(deftest-async test-pipeline-resets-transducer-state-on-every-item-making-stateful-transducers-pretty-much-useless
+  (go
+    (let [ch (async/chan)
+          graph (->> ch
