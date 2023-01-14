@@ -540,4 +540,11 @@
                      (z/spawn))
           out (async/tap graph (chan))]
       (is (= 0 (impl/init graph)))
- 
+      (async/onto-chan ch [1 2 3 4])
+      (is (= [1 2 3 4]
+             (<! (async/into [] out)))))))
+
+(deftest-async test-splice
+  (go
+    (let [ch (async/chan)
+          graph (->> ch
