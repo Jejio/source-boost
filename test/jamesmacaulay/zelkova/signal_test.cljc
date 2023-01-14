@@ -535,4 +535,9 @@
              (<! (async/into [] out)))))
     (let [ch (async/chan)
           graph (->> ch
-            
+                     (z/input 0 :numbers)
+                     (z/pipeline (take 1) 99)
+                     (z/spawn))
+          out (async/tap graph (chan))]
+      (is (= 0 (impl/init graph)))
+ 
