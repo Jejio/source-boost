@@ -515,4 +515,8 @@
                 (z/spawn)
                 (impl/init)))))
 
-(deftest test-pipeline-falls
+(deftest test-pipeline-falls-back-to-base-value-for-init
+  (is (= 99 (->> (z/input 0 :numbers)
+                 (z/pipeline (filter odd?) 99)
+                 (z/spawn)
+                 (impl/init))
