@@ -553,4 +553,7 @@
                                  (async/pipeline-async 1
                                                        to
                                                        (fn [v ch]
-                                                 
+                                                         (go (>! ch v) (async/close! ch)))
+                                                       from))
+                               (constantly -1))
+                   
