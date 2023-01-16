@@ -556,4 +556,10 @@
                                                          (go (>! ch v) (async/close! ch)))
                                                        from))
                                (constantly -1))
-                   
+                     (z/spawn))
+          out (async/tap graph (chan))]
+      (is (= -1 (impl/init graph)))
+      (>! ch 1)
+      (is (= 1 (<! out)))
+      (>! ch 2)
+      (is (= 2 (<! out
