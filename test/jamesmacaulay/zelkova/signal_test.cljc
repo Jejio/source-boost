@@ -567,4 +567,6 @@
       (is (= nil (<! out))))
     (let [graph (->> (z/input :a)
                      (z/splice (fn [to from]
-                
+                                 (async/pipeline-async 1
+                                                       to
+                                                       (fn
