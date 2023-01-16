@@ -551,4 +551,6 @@
                      (z/input 0 :numbers)
                      (z/splice (fn [from to]
                                  (async/pipeline-async 1
-                                       
+                                                       to
+                                                       (fn [v ch]
+                                                 
