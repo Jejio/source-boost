@@ -562,4 +562,9 @@
       (>! ch 1)
       (is (= 1 (<! out)))
       (>! ch 2)
-      (is (= 2 (<! out
+      (is (= 2 (<! out)))
+      (async/close! ch)
+      (is (= nil (<! out))))
+    (let [graph (->> (z/input :a)
+                     (z/splice (fn [to from]
+                
