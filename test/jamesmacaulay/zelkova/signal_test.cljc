@@ -572,4 +572,10 @@
                                                        (fn [v ch]
                                                          (go (>! ch v) (async/close! ch)))
                                                        from)))
-               
+                     (z/spawn))]
+      (is (= :a (impl/init graph))))))
+
+(deftest-async test-activate-when
+  (go
+    (let [go-to-path (event-constructor :path)
+          click (impl
