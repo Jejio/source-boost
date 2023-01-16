@@ -569,4 +569,7 @@
                      (z/splice (fn [to from]
                                  (async/pipeline-async 1
                                                        to
-                                                       (fn
+                                                       (fn [v ch]
+                                                         (go (>! ch v) (async/close! ch)))
+                                                       from)))
+               
