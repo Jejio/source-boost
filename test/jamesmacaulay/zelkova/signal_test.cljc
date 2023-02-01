@@ -582,4 +582,7 @@
           path (z/input "/" :path)
           mouse-clicks (z/input :click :mouse-clicks)
           foo-path? (z/map #{"/foo"} path)
-          clicks-
+          clicks-count (z/count mouse-clicks)
+          clicks-count-activated-on-foo-path (z/activate-when foo-path? clicks-count)
+          combined (z/template {:path path
+                     
