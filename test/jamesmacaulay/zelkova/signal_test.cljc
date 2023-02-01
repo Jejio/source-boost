@@ -585,4 +585,7 @@
           clicks-count (z/count mouse-clicks)
           clicks-count-activated-on-foo-path (z/activate-when foo-path? clicks-count)
           combined (z/template {:path path
-                     
+                                :count clicks-count
+                                :count-on-foo clicks-count-activated-on-foo-path})
+          graph (z/spawn combined)
+          out (async/tap graph (c
