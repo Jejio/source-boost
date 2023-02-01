@@ -578,4 +578,8 @@
 (deftest-async test-activate-when
   (go
     (let [go-to-path (event-constructor :path)
-          click (impl
+          click (impl/make-event :mouse-clicks :click)
+          path (z/input "/" :path)
+          mouse-clicks (z/input :click :mouse-clicks)
+          foo-path? (z/map #{"/foo"} path)
+          clicks-
