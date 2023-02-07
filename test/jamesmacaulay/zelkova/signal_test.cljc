@@ -592,4 +592,8 @@
       (async/onto-chan graph [click
                               (go-to-path "/foo")
                               click
-                        
+                              click
+                              (go-to-path "/bar")
+                              click
+                              click])
+      (is (= [{:path "/" :count 1 :count-on-foo
