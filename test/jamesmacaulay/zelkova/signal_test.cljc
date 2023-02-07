@@ -588,4 +588,8 @@
                                 :count clicks-count
                                 :count-on-foo clicks-count-activated-on-foo-path})
           graph (z/spawn combined)
-          out (async/tap graph (c
+          out (async/tap graph (chan))]
+      (async/onto-chan graph [click
+                              (go-to-path "/foo")
+                              click
+                        
