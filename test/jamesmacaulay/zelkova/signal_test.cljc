@@ -596,4 +596,8 @@
                               (go-to-path "/bar")
                               click
                               click])
-      (is (= [{:path "/" :count 1 :count-on-foo
+      (is (= [{:path "/" :count 1 :count-on-foo 0}
+              {:path "/foo" :count 1 :count-on-foo 0}
+              {:path "/foo" :count 2 :count-on-foo 1}
+              {:path "/foo" :count 3 :count-on-foo 2}
+              {:path 
