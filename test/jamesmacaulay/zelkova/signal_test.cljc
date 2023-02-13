@@ -600,4 +600,7 @@
               {:path "/foo" :count 1 :count-on-foo 0}
               {:path "/foo" :count 2 :count-on-foo 1}
               {:path "/foo" :count 3 :count-on-foo 2}
-              {:path 
+              {:path "/bar" :count 3 :count-on-foo 2}
+              {:path "/bar" :count 4 :count-on-foo 2}
+              {:path "/bar" :count 5 :count-on-foo 2}]
+             (<! (async/into [] out)))))))
